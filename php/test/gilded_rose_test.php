@@ -5,10 +5,11 @@ require_once 'gilded_rose.php';
 class GildedRoseTest extends PHPUnit_Framework_TestCase
 {
 
-    const NORMAL_PRODUCT = "foo";
+    const PRODUCT_NORMAL = "foo";
     const SELL_IN_POSITIVE_DAYS = 10;
+    const PRODUCT_AGED_BRIE = "Aged Brie";
     const SELL_IN_EXPIRED_DATE = -10;
-    const NORMAL_QUALITY = 100;
+    const NORMAL_QUALITY = 10;
     const ZERO_QUALITY = 0;
 
     private $item;
@@ -20,19 +21,19 @@ class GildedRoseTest extends PHPUnit_Framework_TestCase
     {
         $this->expectedQuality = self::NORMAL_QUALITY - 1;
         $this->expectedDate = self::SELL_IN_POSITIVE_DAYS - 1;
-        $this->expectedProductName = self::NORMAL_PRODUCT;
+        $this->expectedProductName = self::PRODUCT_NORMAL;
     }
 
     /** @test  */
     function shouldDecreaseTheQualityBy1WhenNormalProductHasValue()
     {
-        $this->item = new Item(self::NORMAL_PRODUCT, self::SELL_IN_POSITIVE_DAYS, self::NORMAL_QUALITY);
+        $this->item = new Item(self::PRODUCT_NORMAL, self::SELL_IN_POSITIVE_DAYS, self::NORMAL_QUALITY);
     }
 
     /** @test */
     public function shouldDecreaseTheQualityBy2WhenNormalProductHasValueAndIsNotExpired()
     {
-        $this->item = new Item(self::NORMAL_PRODUCT, self::SELL_IN_EXPIRED_DATE, self::NORMAL_QUALITY);
+        $this->item = new Item(self::PRODUCT_NORMAL, self::SELL_IN_EXPIRED_DATE, self::NORMAL_QUALITY);
         $this->expectedQuality = self::NORMAL_QUALITY - 2;
         $this->expectedDate = self::SELL_IN_EXPIRED_DATE - 1;
     }
@@ -40,15 +41,32 @@ class GildedRoseTest extends PHPUnit_Framework_TestCase
     /** @test */
     public function shouldBe0WhenTheQualityIs0()
     {
-        $this->item = new Item(self::NORMAL_PRODUCT, self::SELL_IN_POSITIVE_DAYS, self::ZERO_QUALITY);
+        $this->item = new Item(self::PRODUCT_NORMAL, self::SELL_IN_POSITIVE_DAYS, self::ZERO_QUALITY);
         $this->expectedQuality = self::ZERO_QUALITY;
     }
 
     /** @test */
     public function shouldBe0WhenTheQualityIs0EvenIfIsExpired()
     {
-        $this->item = new Item(self::NORMAL_PRODUCT, self::SELL_IN_EXPIRED_DATE, self::ZERO_QUALITY);
+        $this->item = new Item(self::PRODUCT_NORMAL, self::SELL_IN_EXPIRED_DATE, self::ZERO_QUALITY);
         $this->expectedQuality = self::ZERO_QUALITY;
+        $this->expectedDate = self::SELL_IN_EXPIRED_DATE - 1;
+    }
+
+    /** @test */
+    public function shouldIncreaseTheQualityThenTheProductIsAgedBrie()
+    {
+        $this->item = new Item(self::PRODUCT_AGED_BRIE, self::SELL_IN_POSITIVE_DAYS, self::NORMAL_QUALITY);
+        $this->expectedProductName = self::PRODUCT_AGED_BRIE;
+        $this->expectedQuality = self::NORMAL_QUALITY + 1;
+    }
+
+    /** @test */
+    public function shouldIncreaseTheQualityBy2ThenTheProductIsAgedBrieAndIsExpired()
+    {
+        $this->item = new Item(self::PRODUCT_AGED_BRIE, self::SELL_IN_EXPIRED_DATE, self::NORMAL_QUALITY);
+        $this->expectedProductName = self::PRODUCT_AGED_BRIE;
+        $this->expectedQuality = self::NORMAL_QUALITY + 2;
         $this->expectedDate = self::SELL_IN_EXPIRED_DATE - 1;
     }
 
