@@ -9,6 +9,7 @@ class GildedRoseTest extends PHPUnit_Framework_TestCase
     const SELL_IN_POSITIVE_DAYS = 10;
     const SELL_IN_EXPIRED_DATE = -10;
     const NORMAL_QUALITY = 100;
+    const ZERO_QUALITY = 0;
 
     private $items;
     private $expectedQuality;
@@ -33,6 +34,21 @@ class GildedRoseTest extends PHPUnit_Framework_TestCase
     {
         $this->items = array(new Item(self::NORMAL_PRODUCT, self::SELL_IN_EXPIRED_DATE, self::NORMAL_QUALITY));
         $this->expectedQuality = self::NORMAL_QUALITY - 2;
+        $this->expectedDate = self::SELL_IN_EXPIRED_DATE - 1;
+    }
+
+    /** @test */
+    public function shouldBe0WhenTheQualityIs0()
+    {
+        $this->items = array(new Item(self::NORMAL_PRODUCT, self::SELL_IN_POSITIVE_DAYS, self::ZERO_QUALITY));
+        $this->expectedQuality = self::ZERO_QUALITY;
+    }
+
+    /** @test */
+    public function shouldBe0WhenTheQualityIs0EvenIfIsExpired()
+    {
+        $this->items = array(new Item(self::NORMAL_PRODUCT, self::SELL_IN_EXPIRED_DATE, self::ZERO_QUALITY));
+        $this->expectedQuality = self::ZERO_QUALITY;
         $this->expectedDate = self::SELL_IN_EXPIRED_DATE - 1;
     }
 
