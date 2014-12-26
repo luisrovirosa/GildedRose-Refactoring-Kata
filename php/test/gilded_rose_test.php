@@ -14,9 +14,9 @@ class GildedRoseTest extends PHPUnit_Framework_TestCase
     const SELL_IN_5_DAYS = 5;
     const SELL_IN_0_DAYS = 0;
     const SELL_IN_EXPIRED_DATE = -10;
-    const NORMAL_QUALITY = 10;
-    const MAXIMUM_QUALITY = 50;
-    const ZERO_QUALITY = 0;
+    const QUALITY_NORMAL = 10;
+    const QUALITY_MAXIMUM = 50;
+    const QUALITY_ZERO = 0;
 
     private $item;
     private $expectedQuality;
@@ -25,7 +25,7 @@ class GildedRoseTest extends PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
-        $this->expectedQuality = self::NORMAL_QUALITY - 1;
+        $this->expectedQuality = self::QUALITY_NORMAL - 1;
         $this->expectedDate = self::SELL_IN_POSITIVE_DAYS - 1;
         $this->expectedProductName = self::PRODUCT_NORMAL;
     }
@@ -33,63 +33,63 @@ class GildedRoseTest extends PHPUnit_Framework_TestCase
     /** @test  */
     function shouldDecreaseTheQualityBy1WhenNormalProductHasValue()
     {
-        $this->item = new Item(self::PRODUCT_NORMAL, self::SELL_IN_POSITIVE_DAYS, self::NORMAL_QUALITY);
+        $this->item = new Item(self::PRODUCT_NORMAL, self::SELL_IN_POSITIVE_DAYS, self::QUALITY_NORMAL);
     }
 
     /** @test */
     public function shouldDecreaseTheQualityBy2WhenNormalProductHasValueAndIsNotExpired()
     {
-        $this->item = new Item(self::PRODUCT_NORMAL, self::SELL_IN_EXPIRED_DATE, self::NORMAL_QUALITY);
-        $this->expectedQuality = self::NORMAL_QUALITY - 2;
+        $this->item = new Item(self::PRODUCT_NORMAL, self::SELL_IN_EXPIRED_DATE, self::QUALITY_NORMAL);
+        $this->expectedQuality = self::QUALITY_NORMAL - 2;
         $this->expectedDate = self::SELL_IN_EXPIRED_DATE - 1;
     }
 
     /** @test */
     public function shouldBe0WhenTheQualityIs0()
     {
-        $this->item = new Item(self::PRODUCT_NORMAL, self::SELL_IN_POSITIVE_DAYS, self::ZERO_QUALITY);
-        $this->expectedQuality = self::ZERO_QUALITY;
+        $this->item = new Item(self::PRODUCT_NORMAL, self::SELL_IN_POSITIVE_DAYS, self::QUALITY_ZERO);
+        $this->expectedQuality = self::QUALITY_ZERO;
     }
 
     /** @test */
     public function shouldBe0WhenTheQualityIs0EvenIfIsExpired()
     {
-        $this->item = new Item(self::PRODUCT_NORMAL, self::SELL_IN_EXPIRED_DATE, self::ZERO_QUALITY);
-        $this->expectedQuality = self::ZERO_QUALITY;
+        $this->item = new Item(self::PRODUCT_NORMAL, self::SELL_IN_EXPIRED_DATE, self::QUALITY_ZERO);
+        $this->expectedQuality = self::QUALITY_ZERO;
         $this->expectedDate = self::SELL_IN_EXPIRED_DATE - 1;
     }
 
     /** @test */
     public function shouldIncreaseTheQualityThenTheProductIsAgedBrie()
     {
-        $this->item = new Item(self::PRODUCT_AGED_BRIE, self::SELL_IN_POSITIVE_DAYS, self::NORMAL_QUALITY);
+        $this->item = new Item(self::PRODUCT_AGED_BRIE, self::SELL_IN_POSITIVE_DAYS, self::QUALITY_NORMAL);
         $this->expectedProductName = self::PRODUCT_AGED_BRIE;
-        $this->expectedQuality = self::NORMAL_QUALITY + 1;
+        $this->expectedQuality = self::QUALITY_NORMAL + 1;
     }
 
     /** @test */
     public function shouldIncreaseTheQualityBy2ThenTheProductIsAgedBrieAndIsExpired()
     {
-        $this->item = new Item(self::PRODUCT_AGED_BRIE, self::SELL_IN_EXPIRED_DATE, self::NORMAL_QUALITY);
+        $this->item = new Item(self::PRODUCT_AGED_BRIE, self::SELL_IN_EXPIRED_DATE, self::QUALITY_NORMAL);
         $this->expectedProductName = self::PRODUCT_AGED_BRIE;
-        $this->expectedQuality = self::NORMAL_QUALITY + 2;
+        $this->expectedQuality = self::QUALITY_NORMAL + 2;
         $this->expectedDate = self::SELL_IN_EXPIRED_DATE - 1;
     }
 
     /** @test */
     public function shouldNotIncreaseTheQualityWhenGetsTheMaximum()
     {
-        $this->item = new Item(self::PRODUCT_AGED_BRIE, self::SELL_IN_POSITIVE_DAYS, self::MAXIMUM_QUALITY);
+        $this->item = new Item(self::PRODUCT_AGED_BRIE, self::SELL_IN_POSITIVE_DAYS, self::QUALITY_MAXIMUM);
         $this->expectedProductName = self::PRODUCT_AGED_BRIE;
-        $this->expectedQuality = self::MAXIMUM_QUALITY;
+        $this->expectedQuality = self::QUALITY_MAXIMUM;
     }
 
     /** @test */
     public function shouldNotIncreaseTheQualityWhenGetsTheMaximumAndIsExpired()
     {
-        $this->item = new Item(self::PRODUCT_AGED_BRIE, self::SELL_IN_EXPIRED_DATE, self::MAXIMUM_QUALITY);
+        $this->item = new Item(self::PRODUCT_AGED_BRIE, self::SELL_IN_EXPIRED_DATE, self::QUALITY_MAXIMUM);
         $this->expectedProductName = self::PRODUCT_AGED_BRIE;
-        $this->expectedQuality = self::MAXIMUM_QUALITY;
+        $this->expectedQuality = self::QUALITY_MAXIMUM;
         $this->expectedDate = self::SELL_IN_EXPIRED_DATE - 1;
     }
 
@@ -103,53 +103,53 @@ class GildedRoseTest extends PHPUnit_Framework_TestCase
     /** @test */
     public function shouldNotChangeTheExpectedDateInSulfuras()
     {
-        $this->item = new Item(self::PRODUCT_SULFURAS, self::SELL_IN_POSITIVE_DAYS, self::NORMAL_QUALITY);
+        $this->item = new Item(self::PRODUCT_SULFURAS, self::SELL_IN_POSITIVE_DAYS, self::QUALITY_NORMAL);
         $this->expectedProductName = self::PRODUCT_SULFURAS;
-        $this->expectedQuality = self::NORMAL_QUALITY;
+        $this->expectedQuality = self::QUALITY_NORMAL;
         $this->expectedDate = self::SELL_IN_POSITIVE_DAYS;
     }
 
     /** @test */
     public function shouldNotChangeTheExpectedDateInSulfurasInExpiredDate()
     {
-        $this->item = new Item(self::PRODUCT_SULFURAS, self::SELL_IN_EXPIRED_DATE, self::NORMAL_QUALITY);
+        $this->item = new Item(self::PRODUCT_SULFURAS, self::SELL_IN_EXPIRED_DATE, self::QUALITY_NORMAL);
         $this->expectedProductName = self::PRODUCT_SULFURAS;
-        $this->expectedQuality = self::NORMAL_QUALITY;
+        $this->expectedQuality = self::QUALITY_NORMAL;
         $this->expectedDate = self::SELL_IN_EXPIRED_DATE;
     }
 
     /** @test */
     public function shouldIncreaseTheQualityOfBackstageWhenMoreThan10Days()
     {
-        $this->item = new Item(self::PRODUCT_BACKSTAGE, self::SELL_IN_MORE_THAN_10_DAYS, self::NORMAL_QUALITY);
+        $this->item = new Item(self::PRODUCT_BACKSTAGE, self::SELL_IN_MORE_THAN_10_DAYS, self::QUALITY_NORMAL);
         $this->expectedProductName = self::PRODUCT_BACKSTAGE;
-        $this->expectedQuality = self::NORMAL_QUALITY + 1;
+        $this->expectedQuality = self::QUALITY_NORMAL + 1;
         $this->expectedDate = self::SELL_IN_MORE_THAN_10_DAYS - 1;
     }
 
     /** @test */
     public function shouldIncreaseTheQualityBy2OfBackstageWhen10Days()
     {
-        $this->item = new Item(self::PRODUCT_BACKSTAGE, self::SELL_IN_POSITIVE_DAYS, self::NORMAL_QUALITY);
+        $this->item = new Item(self::PRODUCT_BACKSTAGE, self::SELL_IN_POSITIVE_DAYS, self::QUALITY_NORMAL);
         $this->expectedProductName = self::PRODUCT_BACKSTAGE;
-        $this->expectedQuality = self::NORMAL_QUALITY + 2;
+        $this->expectedQuality = self::QUALITY_NORMAL + 2;
     }
 
     /** @test */
     public function shouldIncreaseTheQualityBy3OfBackstageWhen5Days()
     {
-        $this->item = new Item(self::PRODUCT_BACKSTAGE, self::SELL_IN_5_DAYS, self::NORMAL_QUALITY);
+        $this->item = new Item(self::PRODUCT_BACKSTAGE, self::SELL_IN_5_DAYS, self::QUALITY_NORMAL);
         $this->expectedProductName = self::PRODUCT_BACKSTAGE;
-        $this->expectedQuality = self::NORMAL_QUALITY + 3;
+        $this->expectedQuality = self::QUALITY_NORMAL + 3;
         $this->expectedDate = self::SELL_IN_5_DAYS - 1;
     }
 
     /** @test */
     public function shouldBe0TheQualityByOfBackstageWhen0Days()
     {
-        $this->item = new Item(self::PRODUCT_BACKSTAGE, self::SELL_IN_0_DAYS, self::NORMAL_QUALITY);
+        $this->item = new Item(self::PRODUCT_BACKSTAGE, self::SELL_IN_0_DAYS, self::QUALITY_NORMAL);
         $this->expectedProductName = self::PRODUCT_BACKSTAGE;
-        $this->expectedQuality = self::ZERO_QUALITY;
+        $this->expectedQuality = self::QUALITY_ZERO;
         $this->expectedDate = self::SELL_IN_0_DAYS - 1;
     }
 
@@ -158,26 +158,26 @@ class GildedRoseTest extends PHPUnit_Framework_TestCase
     /** @test */
     public function shouldNotIncreaseTheQualityOfBackstageWhenMoreThan10DaysAndTheQualityIs50()
     {
-        $this->item = new Item(self::PRODUCT_BACKSTAGE, self::SELL_IN_MORE_THAN_10_DAYS, self::MAXIMUM_QUALITY);
+        $this->item = new Item(self::PRODUCT_BACKSTAGE, self::SELL_IN_MORE_THAN_10_DAYS, self::QUALITY_MAXIMUM);
         $this->expectedProductName = self::PRODUCT_BACKSTAGE;
-        $this->expectedQuality = self::MAXIMUM_QUALITY;
+        $this->expectedQuality = self::QUALITY_MAXIMUM;
         $this->expectedDate = self::SELL_IN_MORE_THAN_10_DAYS - 1;
     }
 
     /** @test */
     public function shouldNotIncreaseTheQualityOfBackstageWhen10DaysAndTheQualityIs50()
     {
-        $this->item = new Item(self::PRODUCT_BACKSTAGE, self::SELL_IN_POSITIVE_DAYS, self::MAXIMUM_QUALITY);
+        $this->item = new Item(self::PRODUCT_BACKSTAGE, self::SELL_IN_POSITIVE_DAYS, self::QUALITY_MAXIMUM);
         $this->expectedProductName = self::PRODUCT_BACKSTAGE;
-        $this->expectedQuality = self::MAXIMUM_QUALITY;
+        $this->expectedQuality = self::QUALITY_MAXIMUM;
     }
 
     /** @test */
     public function shouldNotIncreaseTheQualityOfBackstageWhen5DaysAndTheQualityIs50()
     {
-        $this->item = new Item(self::PRODUCT_BACKSTAGE, self::SELL_IN_5_DAYS, self::MAXIMUM_QUALITY);
+        $this->item = new Item(self::PRODUCT_BACKSTAGE, self::SELL_IN_5_DAYS, self::QUALITY_MAXIMUM);
         $this->expectedProductName = self::PRODUCT_BACKSTAGE;
-        $this->expectedQuality = self::MAXIMUM_QUALITY;
+        $this->expectedQuality = self::QUALITY_MAXIMUM;
         $this->expectedDate = self::SELL_IN_5_DAYS - 1;
     }
 
