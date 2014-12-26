@@ -4,6 +4,7 @@ namespace LuisRovirosa\GildedRose;
 
 use LuisRovirosa\GildedRose\Rules\AgedBrie;
 use LuisRovirosa\GildedRose\Rules\Backstage;
+use LuisRovirosa\GildedRose\Rules\Sulfuras;
 
 class GildedRose
 {
@@ -14,7 +15,7 @@ class GildedRose
     function __construct($items)
     {
         $this->items = $items;
-        $this->rules = array(new AgedBrie(), new Backstage());
+        $this->rules = array(new AgedBrie(), new Backstage(), new Sulfuras());
     }
 
     function update_quality()
