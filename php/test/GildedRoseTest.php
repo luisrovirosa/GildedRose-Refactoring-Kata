@@ -188,9 +188,9 @@ class GildedRoseTest extends \PHPUnit_Framework_TestCase
     {
         $gildedRose = new GildedRose(array($this->item));
         $gildedRose->update_quality();
-        $this->assertEquals($this->expectedQuality, $this->item->quality);
-        $this->assertEquals($this->expectedDate, $this->item->sell_in);
-        $this->assertEquals($this->expectedProductName, $this->item->name);
+        $this->assertEquals($this->expectedQuality, $this->item->quality, 'Expected quality');
+        $this->assertEquals($this->expectedDate, $this->item->sell_in, 'Expected date');
+        $this->assertEquals($this->expectedProductName, $this->item->name, 'Expected product name');
     }
 
 }

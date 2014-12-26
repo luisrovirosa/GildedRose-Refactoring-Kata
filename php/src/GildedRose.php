@@ -2,14 +2,18 @@
 
 namespace LuisRovirosa\GildedRose;
 
+use LuisRovirosa\GildedRose\Rules\AgedBrie;
+
 class GildedRose
 {
 
     private $items;
+    private $rules;
 
     function __construct($items)
     {
         $this->items = $items;
+        $this->rules = array(new AgedBrie());
     }
 
     function update_quality()
@@ -21,7 +25,14 @@ class GildedRose
 
     private function updateItem($item)
     {
-        if ($item->name != 'Aged Brie' and $item->name != 'Backstage passes to a TAFKAL80ETC concert') {
+        foreach ($this->rules as $rule) {
+            if ($rule->match($item)) {
+                $rule->apply($item);
+                return;
+            }
+        }
+
+        if ($item->name != 'Backstage passes to a TAFKAL80ETC concert') {
             if ($item->quality > 0) {
                 if ($item->name != 'Sulfuras, Hand of Ragnaros') {
                     $item->quality = $item->quality - 1;
@@ -59,10 +70,6 @@ class GildedRose
                     }
                 } else {
                     $item->quality = $item->quality - $item->quality;
-                }
-            } else {
-                if ($item->quality < 50) {
-                    $item->quality = $item->quality + 1;
                 }
             }
         }
