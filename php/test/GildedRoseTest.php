@@ -1,8 +1,11 @@
 <?php
 
-require_once 'gilded_rose.php';
+namespace LuisRovirosa\GildedRose\Test;
 
-class GildedRoseTest extends PHPUnit_Framework_TestCase
+use LuisRovirosa\GildedRose\Item;
+use LuisRovirosa\GildedRose\GildedRose;
+
+class GildedRoseTest extends \PHPUnit_Framework_TestCase
 {
 
     const PRODUCT_NORMAL = "foo";

@@ -1,0 +1,17 @@
+{
+    "name": "luisrovirosa/gilded_rose",
+    "description": "Gilded Rose refactor in PHP",
+    "authors": [
+        {
+            "name": "Luis Rovirosa",
+            "email": "luisrovirosa@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "LuisRovirosa\\GildedRose\\Test\\": "test",
+            "LuisRovirosa\\GildedRose\\": "src"
+        }
+    },
+    "require": {}
+}
