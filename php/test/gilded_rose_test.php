@@ -6,8 +6,9 @@ class GildedRoseTest extends PHPUnit_Framework_TestCase
 {
 
     const PRODUCT_NORMAL = "foo";
-    const SELL_IN_POSITIVE_DAYS = 10;
     const PRODUCT_AGED_BRIE = "Aged Brie";
+    const PRODUCT_SULFURAS = "Sulfuras, Hand of Ragnaros";
+    const SELL_IN_POSITIVE_DAYS = 10;
     const SELL_IN_EXPIRED_DATE = -10;
     const NORMAL_QUALITY = 10;
     const MAXIMUM_QUALITY = 50;
@@ -94,6 +95,24 @@ class GildedRoseTest extends PHPUnit_Framework_TestCase
 //        $this->item = new Item(self::PRODUCT_NORMAL, self::SELL_IN_POSITIVE_DAYS, self::MAXIMUM_QUALITY * 99);
 //        $this->expectedQuality = self::MAXIMUM_QUALITY - 1;
 //    }
+
+    /** @test */
+    public function shouldNotChangeTheExpectedDateInSulfuras()
+    {
+        $this->item = new Item(self::PRODUCT_SULFURAS, self::SELL_IN_POSITIVE_DAYS, self::NORMAL_QUALITY);
+        $this->expectedProductName = self::PRODUCT_SULFURAS;
+        $this->expectedQuality = self::NORMAL_QUALITY;
+        $this->expectedDate = self::SELL_IN_POSITIVE_DAYS;
+    }
+
+    /** @test */
+    public function shouldNotChangeTheExpectedDateInSulfurasInExpiredDate()
+    {
+        $this->item = new Item(self::PRODUCT_SULFURAS, self::SELL_IN_EXPIRED_DATE, self::NORMAL_QUALITY);
+        $this->expectedProductName = self::PRODUCT_SULFURAS;
+        $this->expectedQuality = self::NORMAL_QUALITY;
+        $this->expectedDate = self::SELL_IN_EXPIRED_DATE;
+    }
 
     protected function tearDown()
     {
