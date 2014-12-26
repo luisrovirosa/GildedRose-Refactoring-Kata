@@ -8,7 +8,11 @@ class GildedRoseTest extends PHPUnit_Framework_TestCase
     const PRODUCT_NORMAL = "foo";
     const PRODUCT_AGED_BRIE = "Aged Brie";
     const PRODUCT_SULFURAS = "Sulfuras, Hand of Ragnaros";
+    const PRODUCT_BACKSTAGE = "Backstage passes to a TAFKAL80ETC concert";
     const SELL_IN_POSITIVE_DAYS = 10;
+    const SELL_IN_MORE_THAN_10_DAYS = 20;
+    const SELL_IN_5_DAYS = 5;
+    const SELL_IN_0_DAYS = 0;
     const SELL_IN_EXPIRED_DATE = -10;
     const NORMAL_QUALITY = 10;
     const MAXIMUM_QUALITY = 50;
@@ -112,6 +116,69 @@ class GildedRoseTest extends PHPUnit_Framework_TestCase
         $this->expectedProductName = self::PRODUCT_SULFURAS;
         $this->expectedQuality = self::NORMAL_QUALITY;
         $this->expectedDate = self::SELL_IN_EXPIRED_DATE;
+    }
+
+    /** @test */
+    public function shouldIncreaseTheQualityOfBackstageWhenMoreThan10Days()
+    {
+        $this->item = new Item(self::PRODUCT_BACKSTAGE, self::SELL_IN_MORE_THAN_10_DAYS, self::NORMAL_QUALITY);
+        $this->expectedProductName = self::PRODUCT_BACKSTAGE;
+        $this->expectedQuality = self::NORMAL_QUALITY + 1;
+        $this->expectedDate = self::SELL_IN_MORE_THAN_10_DAYS - 1;
+    }
+
+    /** @test */
+    public function shouldIncreaseTheQualityBy2OfBackstageWhen10Days()
+    {
+        $this->item = new Item(self::PRODUCT_BACKSTAGE, self::SELL_IN_POSITIVE_DAYS, self::NORMAL_QUALITY);
+        $this->expectedProductName = self::PRODUCT_BACKSTAGE;
+        $this->expectedQuality = self::NORMAL_QUALITY + 2;
+    }
+
+    /** @test */
+    public function shouldIncreaseTheQualityBy3OfBackstageWhen5Days()
+    {
+        $this->item = new Item(self::PRODUCT_BACKSTAGE, self::SELL_IN_5_DAYS, self::NORMAL_QUALITY);
+        $this->expectedProductName = self::PRODUCT_BACKSTAGE;
+        $this->expectedQuality = self::NORMAL_QUALITY + 3;
+        $this->expectedDate = self::SELL_IN_5_DAYS - 1;
+    }
+
+    /** @test */
+    public function shouldBe0TheQualityByOfBackstageWhen0Days()
+    {
+        $this->item = new Item(self::PRODUCT_BACKSTAGE, self::SELL_IN_0_DAYS, self::NORMAL_QUALITY);
+        $this->expectedProductName = self::PRODUCT_BACKSTAGE;
+        $this->expectedQuality = self::ZERO_QUALITY;
+        $this->expectedDate = self::SELL_IN_0_DAYS - 1;
+    }
+
+    //----------------------------
+
+    /** @test */
+    public function shouldNotIncreaseTheQualityOfBackstageWhenMoreThan10DaysAndTheQualityIs50()
+    {
+        $this->item = new Item(self::PRODUCT_BACKSTAGE, self::SELL_IN_MORE_THAN_10_DAYS, self::MAXIMUM_QUALITY);
+        $this->expectedProductName = self::PRODUCT_BACKSTAGE;
+        $this->expectedQuality = self::MAXIMUM_QUALITY;
+        $this->expectedDate = self::SELL_IN_MORE_THAN_10_DAYS - 1;
+    }
+
+    /** @test */
+    public function shouldNotIncreaseTheQualityOfBackstageWhen10DaysAndTheQualityIs50()
+    {
+        $this->item = new Item(self::PRODUCT_BACKSTAGE, self::SELL_IN_POSITIVE_DAYS, self::MAXIMUM_QUALITY);
+        $this->expectedProductName = self::PRODUCT_BACKSTAGE;
+        $this->expectedQuality = self::MAXIMUM_QUALITY;
+    }
+
+    /** @test */
+    public function shouldNotIncreaseTheQualityOfBackstageWhen5DaysAndTheQualityIs50()
+    {
+        $this->item = new Item(self::PRODUCT_BACKSTAGE, self::SELL_IN_5_DAYS, self::MAXIMUM_QUALITY);
+        $this->expectedProductName = self::PRODUCT_BACKSTAGE;
+        $this->expectedQuality = self::MAXIMUM_QUALITY;
+        $this->expectedDate = self::SELL_IN_5_DAYS - 1;
     }
 
     protected function tearDown()
