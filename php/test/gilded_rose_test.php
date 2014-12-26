@@ -10,6 +10,7 @@ class GildedRoseTest extends PHPUnit_Framework_TestCase
     const PRODUCT_AGED_BRIE = "Aged Brie";
     const SELL_IN_EXPIRED_DATE = -10;
     const NORMAL_QUALITY = 10;
+    const MAXIMUM_QUALITY = 50;
     const ZERO_QUALITY = 0;
 
     private $item;
@@ -69,6 +70,30 @@ class GildedRoseTest extends PHPUnit_Framework_TestCase
         $this->expectedQuality = self::NORMAL_QUALITY + 2;
         $this->expectedDate = self::SELL_IN_EXPIRED_DATE - 1;
     }
+
+    /** @test */
+    public function shouldNotIncreaseTheQualityWhenGetsTheMaximum()
+    {
+        $this->item = new Item(self::PRODUCT_AGED_BRIE, self::SELL_IN_POSITIVE_DAYS, self::MAXIMUM_QUALITY);
+        $this->expectedProductName = self::PRODUCT_AGED_BRIE;
+        $this->expectedQuality = self::MAXIMUM_QUALITY;
+    }
+
+    /** @test */
+    public function shouldNotIncreaseTheQualityWhenGetsTheMaximumAndIsExpired()
+    {
+        $this->item = new Item(self::PRODUCT_AGED_BRIE, self::SELL_IN_EXPIRED_DATE, self::MAXIMUM_QUALITY);
+        $this->expectedProductName = self::PRODUCT_AGED_BRIE;
+        $this->expectedQuality = self::MAXIMUM_QUALITY;
+        $this->expectedDate = self::SELL_IN_EXPIRED_DATE - 1;
+    }
+
+//    /** @test */
+//    public function shouldNotHaveMoreQualityThan50()
+//    {
+//        $this->item = new Item(self::PRODUCT_NORMAL, self::SELL_IN_POSITIVE_DAYS, self::MAXIMUM_QUALITY * 99);
+//        $this->expectedQuality = self::MAXIMUM_QUALITY - 1;
+//    }
 
     protected function tearDown()
     {
