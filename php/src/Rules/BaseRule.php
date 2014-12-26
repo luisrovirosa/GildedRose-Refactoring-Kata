@@ -23,7 +23,7 @@ abstract class BaseRule
 
     protected function updateQuality($item)
     {
-        $item->quality = min(50, $item->quality + $this->getQualityIncrement($item));
+        $item->quality = max(0, min(50, $item->quality + $this->getQualityIncrement($item)));
     }
 
     abstract public function match($item);
