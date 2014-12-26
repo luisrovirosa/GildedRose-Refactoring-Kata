@@ -1,6 +1,10 @@
 <?php
 
-require_once 'gilded_rose.php';
+require_once 'GildedRose.php';
+require_once 'Item.php';
+
+use LuisRovirosa\GildedRose\GildedRose;
+use LuisRovirosa\GildedRose\Item;
 
 echo "OMGHAI!\n";
 
