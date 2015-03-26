@@ -5,7 +5,7 @@ namespace LuisRovirosa\GildedRose\Test;
 use LuisRovirosa\GildedRose\Item;
 use LuisRovirosa\GildedRose\GildedRose;
 
-abstract class GildedRoseTest extends \PHPUnit_Framework_TestCase
+abstract class BaseTest extends \PHPUnit_Framework_TestCase
 {
 
     const PRODUCT_NORMAL = "foo";
@@ -20,6 +20,24 @@ abstract class GildedRoseTest extends \PHPUnit_Framework_TestCase
     const QUALITY_NORMAL = 10;
     const QUALITY_MAXIMUM = 50;
     const QUALITY_ZERO = 0;
+
+    public function possibleDays()
+    {
+        return array(
+            array(BaseTest::SELL_IN_EXPIRED_DATE),
+            array(BaseTest::SELL_IN_POSITIVE_DAYS),
+            array(BaseTest::SELL_IN_0_DAYS),
+        );
+    }
+
+    public function possibleQualities()
+    {
+        return array(
+            array(BaseTest::QUALITY_NORMAL),
+            array(BaseTest::QUALITY_ZERO),
+            array(BaseTest::QUALITY_MAXIMUM),
+        );
+    }
 
     /**
      * @param $name

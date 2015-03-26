@@ -3,7 +3,7 @@
 
 namespace LuisRovirosa\GildedRose\Test;
 
-class OtherTests extends GildedRoseTest
+class OtherTests extends BaseTest
 {
     private $item;
     private $expectedQuality;

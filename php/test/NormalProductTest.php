@@ -3,19 +3,19 @@
 
 namespace LuisRovirosa\GildedRose\Test;
 
-class NormalProductTest extends GildedRoseTest
+class NormalProductTest extends BaseTest
 {
     const PRODUCT_NORMAL = "foo";
 
     /**
-     * @dataProvider remainingDaysProvider
+     * @dataProvider possibleDays
      * @test
      */
-    public function shouldDecreaseTheDaysByOne($days, $message)
+    public function shouldDecreaseTheDaysByOne($days)
     {
         $this->createProduct(self::PRODUCT_NORMAL, $days, self::QUALITY_NORMAL);
         $this->nextDay();
-        $this->assertExpectedDays($days - 1, $message);
+        $this->assertExpectedDays($days - 1, "Normal product should decrease the days to expire by 1");
     }
 
     /**
@@ -27,14 +27,6 @@ class NormalProductTest extends GildedRoseTest
         $this->createProduct(self::PRODUCT_NORMAL, $days, $quality);
         $this->nextDay();
         $this->assertQuality($quality - $difference, $message);
-    }
-
-    public function remainingDaysProvider()
-    {
-        return array(
-            array(self::SELL_IN_POSITIVE_DAYS, "Positive days"),
-            array(self::SELL_IN_EXPIRED_DATE, "Expired date"),
-        );
     }
 
     public function qualityProvider()

@@ -2,10 +2,10 @@
 
 namespace LuisRovirosa\GildedRose\Test;
 
-class AgedBrieTest extends GildedRoseTest
+class AgedBrieTest extends BaseTest
 {
     /**
-     * @dataProvider typeOfDays
+     * @dataProvider possibleDays
      * @test
      */
     public function shouldIncreaseTheQualityThenTheProductIsAgedBrie($days)
@@ -16,7 +16,7 @@ class AgedBrieTest extends GildedRoseTest
     }
 
     /**
-     * @dataProvider typeOfDays
+     * @dataProvider possibleDays
      * @test
      */
     public function shouldNotIncreaseTheQualityWhenGetsTheMaximum($days)
@@ -24,13 +24,5 @@ class AgedBrieTest extends GildedRoseTest
         $this->createProduct(self::PRODUCT_AGED_BRIE, $days, self::QUALITY_MAXIMUM);
         $this->nextDay();
         $this->assertQuality(self::QUALITY_MAXIMUM, "Aged brie never has more quality than the maximum");
-    }
-
-    public function typeOfDays()
-    {
-        return array(
-            array(self::SELL_IN_POSITIVE_DAYS),
-            array(self::SELL_IN_EXPIRED_DATE)
-        );
     }
 }
