@@ -10,6 +10,8 @@ namespace LuisRovirosa\GildedRose\Rules;
 abstract class BaseRule
 {
 
+    abstract public function match($item);
+
     public function apply($item)
     {
         $this->updateSellIn($item);
@@ -21,7 +23,18 @@ abstract class BaseRule
         $this->decreaseOneDayToExpire($item);
     }
 
-    protected function updateQuality($item)
+    abstract protected function getQualityIncrement($item);
+
+    /**
+     * @param $item
+     * @return bool
+     */
+    protected function isExpired($item)
+    {
+        return $item->sell_in < 0;
+    }
+
+    private function updateQuality($item)
     {
         $item->quality = $item->quality + $this->getQualityIncrement($item);
         $this->assertMinimumValue($item);
@@ -38,25 +51,8 @@ abstract class BaseRule
         $item->quality = min(50, $item->quality);
     }
 
-    abstract public function match($item);
-
-    abstract protected function getQualityIncrement($item);
-
-    /**
-     * @param $item
-     * @return mixed
-     */
-    protected function decreaseOneDayToExpire($item)
+    private function decreaseOneDayToExpire($item)
     {
         $item->sell_in--;
-    }
-
-    /**
-     * @param $item
-     * @return bool
-     */
-    protected function isExpired($item)
-    {
-        return $item->sell_in < 0;
     }
 }

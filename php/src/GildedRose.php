@@ -31,9 +31,9 @@ class GildedRose
         foreach ($this->rules as $rule) {
             if ($rule->match($item)) {
                 $rule->apply($item);
-                break;
+
+                return;
             }
         }
     }
-
 }

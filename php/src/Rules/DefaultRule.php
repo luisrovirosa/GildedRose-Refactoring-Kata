@@ -13,6 +13,11 @@ class DefaultRule extends BaseRule
     const DECREASE_AT_NORMAL_SPEED = -1;
     const DECREASE_AT_DOUBLE_SPEED = -2;
 
+    public function match($item)
+    {
+        return true;
+    }
+
     protected function getQualityIncrement($item)
     {
         if ($this->isExpired($item)) {
@@ -20,10 +25,5 @@ class DefaultRule extends BaseRule
         } else {
             return self::DECREASE_AT_NORMAL_SPEED;
         }
-    }
-
-    public function match($item)
-    {
-        return true;
     }
 }
