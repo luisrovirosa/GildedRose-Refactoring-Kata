@@ -17,30 +17,6 @@ class OtherTests extends GildedRoseTest
         $this->expectedProductName = self::PRODUCT_NORMAL;
     }
 
-    /** @test */
-    public function shouldIncreaseTheQualityThenTheProductIsAgedBrie()
-    {
-        $this->item = new Item(self::PRODUCT_AGED_BRIE, self::SELL_IN_POSITIVE_DAYS, self::QUALITY_NORMAL);
-        $this->expectedProductName = self::PRODUCT_AGED_BRIE;
-        $this->expectedQuality = self::QUALITY_NORMAL + 1;
-    }
-
-    /** @test */
-    public function shouldNotIncreaseTheQualityWhenGetsTheMaximum()
-    {
-        $this->item = new Item(self::PRODUCT_AGED_BRIE, self::SELL_IN_POSITIVE_DAYS, self::QUALITY_MAXIMUM);
-        $this->expectedProductName = self::PRODUCT_AGED_BRIE;
-        $this->expectedQuality = self::QUALITY_MAXIMUM;
-    }
-
-    /** @test */
-    public function shouldNotIncreaseTheQualityWhenGetsTheMaximumAndIsExpired()
-    {
-        $this->item = new Item(self::PRODUCT_AGED_BRIE, self::SELL_IN_EXPIRED_DATE, self::QUALITY_MAXIMUM);
-        $this->expectedProductName = self::PRODUCT_AGED_BRIE;
-        $this->expectedQuality = self::QUALITY_MAXIMUM;
-        $this->expectedDate = self::SELL_IN_EXPIRED_DATE - 1;
-    }
 
 //    /** @test */
 //    public function shouldNotHaveMoreQualityThan50()

@@ -21,4 +21,38 @@ abstract class GildedRoseTest extends \PHPUnit_Framework_TestCase
     const QUALITY_MAXIMUM = 50;
     const QUALITY_ZERO = 0;
 
+    /**
+     * @param $name
+     * @param $days
+     * @param $quality
+     * @return Item
+     */
+    protected function createProduct($name, $days, $quality)
+    {
+        $this->item = new Item($name, $days, $quality);
+    }
+
+    protected function nextDay()
+    {
+        $gildedRose = new GildedRose(array($this->item));
+        $gildedRose->update_quality();
+    }
+
+    /**
+     * @param $expectedQuality
+     * @param $message
+     */
+    protected function assertQuality($expectedQuality, $message)
+    {
+        $this->assertEquals($expectedQuality, $this->item->quality, $message);
+    }
+
+    /**
+     * @param $expectedDays
+     * @param $message
+     */
+    protected function assertExpectedDays($expectedDays, $message)
+    {
+        $this->assertEquals($expectedDays, $this->item->sell_in, $message);
+    }
 }

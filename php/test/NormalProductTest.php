@@ -3,9 +3,6 @@
 
 namespace LuisRovirosa\GildedRose\Test;
 
-use LuisRovirosa\GildedRose\GildedRose;
-use LuisRovirosa\GildedRose\Item;
-
 class NormalProductTest extends GildedRoseTest
 {
     const PRODUCT_NORMAL = "foo";
@@ -48,40 +45,5 @@ class NormalProductTest extends GildedRoseTest
             array(self::SELL_IN_POSITIVE_DAYS, self::QUALITY_ZERO, 0, "Quality never can be lower than 0"),
             array(self::SELL_IN_EXPIRED_DATE, self::QUALITY_ZERO, 0, "Quality never can be lower than 0"),
         );
-    }
-
-    /**
-     * @param $name
-     * @param $days
-     * @param $quality
-     * @return Item
-     */
-    protected function createProduct($name, $days, $quality)
-    {
-        $this->item = new Item($name, $days, $quality);
-    }
-
-    protected function nextDay()
-    {
-        $gildedRose = new GildedRose(array($this->item));
-        $gildedRose->update_quality();
-    }
-
-    /**
-     * @param $expectedQuality
-     * @param $message
-     */
-    protected function assertQuality($expectedQuality, $message)
-    {
-        $this->assertEquals($expectedQuality, $this->item->quality, $message);
-    }
-
-    /**
-     * @param $expectedDays
-     * @param $message
-     */
-    protected function assertExpectedDays($expectedDays, $message)
-    {
-        $this->assertEquals($expectedDays, $this->item->sell_in, $message);
     }
 }
