@@ -17,15 +17,24 @@ class Backstage extends BaseRule
 
     protected function getQualityIncrement($item)
     {
-        if ($item->sell_in > 10) {
+        if ($this->expireInMoreThan($item, 10)) {
             return 1;
-        } else if ($item->sell_in > 5) {
+        } elseif ($this->expireInMoreThan($item, 5)) {
             return 2;
-        } else if ($item->sell_in > 0) {
+        } elseif ($this->expireInMoreThan($item, 2)) {
             return 3;
         } else {
             return -$item->quality;
         }
     }
 
+    /**
+     * @param $item
+     * @param $days
+     * @return bool
+     */
+    protected function expireInMoreThan($item, $days)
+    {
+        return $item->sell_in > $days;
+    }
 }

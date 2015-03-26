@@ -10,6 +10,8 @@ namespace LuisRovirosa\GildedRose\Rules;
 class AgedBrie extends BaseRule
 {
 
+    const INCREASE_AT_NORMAL_SPEED = 1;
+
     public function match($item)
     {
         return $item->name == 'Aged Brie';
@@ -17,7 +19,6 @@ class AgedBrie extends BaseRule
 
     protected function getQualityIncrement($item)
     {
-        return 0 > $item->sell_in ? 2 : 1;
+        return self::INCREASE_AT_NORMAL_SPEED;
     }
-
 }

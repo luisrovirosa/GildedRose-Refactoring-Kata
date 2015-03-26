@@ -18,7 +18,7 @@ abstract class BaseRule
 
     protected function updateSellIn($item)
     {
-        $item->sell_in--;
+        $this->decreaseOneDayToExpire($item);
     }
 
     protected function updateQuality($item)
@@ -41,4 +41,22 @@ abstract class BaseRule
     abstract public function match($item);
 
     abstract protected function getQualityIncrement($item);
+
+    /**
+     * @param $item
+     * @return mixed
+     */
+    protected function decreaseOneDayToExpire($item)
+    {
+        $item->sell_in--;
+    }
+
+    /**
+     * @param $item
+     * @return bool
+     */
+    protected function isExpired($item)
+    {
+        return 0 > $item->sell_in;
+    }
 }

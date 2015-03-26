@@ -33,7 +33,7 @@ class GildedRoseTest extends \PHPUnit_Framework_TestCase
         $this->expectedProductName = self::PRODUCT_NORMAL;
     }
 
-    /** @test  */
+    /** @test */
     function shouldDecreaseTheQualityBy1WhenNormalProductHasValue()
     {
         $this->item = new Item(self::PRODUCT_NORMAL, self::SELL_IN_POSITIVE_DAYS, self::QUALITY_NORMAL);
@@ -68,15 +68,6 @@ class GildedRoseTest extends \PHPUnit_Framework_TestCase
         $this->item = new Item(self::PRODUCT_AGED_BRIE, self::SELL_IN_POSITIVE_DAYS, self::QUALITY_NORMAL);
         $this->expectedProductName = self::PRODUCT_AGED_BRIE;
         $this->expectedQuality = self::QUALITY_NORMAL + 1;
-    }
-
-    /** @test */
-    public function shouldIncreaseTheQualityBy2ThenTheProductIsAgedBrieAndIsExpired()
-    {
-        $this->item = new Item(self::PRODUCT_AGED_BRIE, self::SELL_IN_EXPIRED_DATE, self::QUALITY_NORMAL);
-        $this->expectedProductName = self::PRODUCT_AGED_BRIE;
-        $this->expectedQuality = self::QUALITY_NORMAL + 2;
-        $this->expectedDate = self::SELL_IN_EXPIRED_DATE - 1;
     }
 
     /** @test */
@@ -192,5 +183,4 @@ class GildedRoseTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($this->expectedDate, $this->item->sell_in, 'Expected date');
         $this->assertEquals($this->expectedProductName, $this->item->name, 'Expected product name');
     }
-
 }

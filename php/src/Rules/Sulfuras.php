@@ -12,18 +12,14 @@ class Sulfuras extends BaseRule
 
     protected function getQualityIncrement($item)
     {
-
     }
 
     protected function updateSellIn($item)
     {
-
     }
 
     public function match($item)
     {
         return $item->name == 'Sulfuras, Hand of Ragnaros';
     }
-
-//put your code here
 }
