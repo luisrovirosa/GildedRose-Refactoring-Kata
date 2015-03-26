@@ -57,6 +57,6 @@ abstract class BaseRule
      */
     protected function isExpired($item)
     {
-        return 0 > $item->sell_in;
+        return $item->sell_in < 0;
     }
 }
