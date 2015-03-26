@@ -25,4 +25,15 @@ class AgedBrieTest extends BaseTest
         $this->nextDay();
         $this->assertQuality(self::QUALITY_MAXIMUM, "Aged brie never has more quality than the maximum");
     }
+
+    /**
+     * @dataProvider possibleDays
+     * @test
+     */
+    public function shouldDecreaseTheDaysByOne($days)
+    {
+        $this->createProduct(self::PRODUCT_NORMAL, $days, self::QUALITY_NORMAL);
+        $this->nextDay();
+        $this->assertExpectedDays($days - 1, "Normal product should decrease the days to expire by 1");
+    }
 }

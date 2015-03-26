@@ -22,20 +22,31 @@ class NormalProductTest extends BaseTest
      * @dataProvider qualityProvider
      * @test
      */
-    public function shouldChangeQualityTo($days, $quality, $difference, $message)
+    public function shouldChangeQualityTo($days, $difference, $message)
     {
-        $this->createProduct(self::PRODUCT_NORMAL, $days, $quality);
+        $this->createProduct(self::PRODUCT_NORMAL, $days, self::QUALITY_NORMAL);
         $this->nextDay();
-        $this->assertQuality($quality - $difference, $message);
+        $this->assertQuality(self::QUALITY_NORMAL - $difference, $message);
+    }
+
+    /**
+     * @dataProvider possibleDays
+     * @test
+     */
+    public function theQualityIsNeverLowerThan0($days)
+    {
+        $this->createProduct(self::PRODUCT_NORMAL, $days, self::QUALITY_ZERO);
+        $this->nextDay();
+        $this->assertQuality(self::QUALITY_ZERO, "The quality is never lower than 0");
     }
 
     public function qualityProvider()
     {
         return array(
-            array(self::SELL_IN_POSITIVE_DAYS, self::QUALITY_NORMAL, 1, "Positive days decrease quality in 1"),
-            array(self::SELL_IN_EXPIRED_DATE, self::QUALITY_NORMAL, 2, "In expired date decrease quality in 2"),
-            array(self::SELL_IN_POSITIVE_DAYS, self::QUALITY_ZERO, 0, "Quality never can be lower than 0"),
-            array(self::SELL_IN_EXPIRED_DATE, self::QUALITY_ZERO, 0, "Quality never can be lower than 0"),
+            array(self::SELL_IN_POSITIVE_DAYS, 1, "Positive days decrease quality in 1"),
+            array(self::SELL_IN_1_DAY, 1, "With 1 day decrease quality in 1"),
+            array(self::SELL_IN_0_DAYS, 2, "With 0 day decrease quality in 2"),
+            array(self::SELL_IN_EXPIRED_DATE, 2, "In expired date decrease quality in 2"),
         );
     }
 }

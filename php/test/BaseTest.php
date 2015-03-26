@@ -15,6 +15,7 @@ abstract class BaseTest extends \PHPUnit_Framework_TestCase
     const SELL_IN_POSITIVE_DAYS = 10;
     const SELL_IN_MORE_THAN_10_DAYS = 20;
     const SELL_IN_5_DAYS = 5;
+    const SELL_IN_1_DAY = 1;
     const SELL_IN_0_DAYS = 0;
     const SELL_IN_EXPIRED_DATE = -10;
     const QUALITY_NORMAL = 10;
@@ -27,6 +28,7 @@ abstract class BaseTest extends \PHPUnit_Framework_TestCase
             array(BaseTest::SELL_IN_EXPIRED_DATE),
             array(BaseTest::SELL_IN_POSITIVE_DAYS),
             array(BaseTest::SELL_IN_0_DAYS),
+            array(BaseTest::SELL_IN_EXPIRED_DATE),
         );
     }
 
