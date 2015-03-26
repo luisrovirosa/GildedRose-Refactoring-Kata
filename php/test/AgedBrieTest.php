@@ -4,6 +4,8 @@ namespace LuisRovirosa\GildedRose\Test;
 
 class AgedBrieTest extends BaseTest
 {
+    const PRODUCT_AGED_BRIE = "Aged Brie";
+
     /**
      * @dataProvider possibleDays
      * @test
@@ -32,7 +34,7 @@ class AgedBrieTest extends BaseTest
      */
     public function shouldDecreaseTheDaysByOne($days)
     {
-        $this->createProduct(self::PRODUCT_NORMAL, $days, self::QUALITY_NORMAL);
+        $this->createProduct(self::PRODUCT_AGED_BRIE, $days, self::QUALITY_NORMAL);
         $this->nextDay();
         $this->assertExpectedDays($days - 1, "Normal product should decrease the days to expire by 1");
     }

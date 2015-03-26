@@ -5,6 +5,7 @@ namespace LuisRovirosa\GildedRose\Test;
 
 class SulfurasTest extends BaseTest
 {
+    const PRODUCT_SULFURAS = "Sulfuras, Hand of Ragnaros";
 
     /**
      * @dataProvider possibleDays

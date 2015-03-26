@@ -7,27 +7,25 @@ use LuisRovirosa\GildedRose\GildedRose;
 
 abstract class BaseTest extends \PHPUnit_Framework_TestCase
 {
-
-    const PRODUCT_NORMAL = "foo";
-    const PRODUCT_AGED_BRIE = "Aged Brie";
-    const PRODUCT_SULFURAS = "Sulfuras, Hand of Ragnaros";
-    const PRODUCT_BACKSTAGE = "Backstage passes to a TAFKAL80ETC concert";
+    const SELL_IN_EXPIRED_DATE = -10;
+    const SELL_IN_0_DAYS = 0;
+    const SELL_IN_1_DAY = 1;
+    const SELL_IN_5_DAYS = 5;
     const SELL_IN_POSITIVE_DAYS = 10;
     const SELL_IN_MORE_THAN_10_DAYS = 20;
-    const SELL_IN_5_DAYS = 5;
-    const SELL_IN_1_DAY = 1;
-    const SELL_IN_0_DAYS = 0;
-    const SELL_IN_EXPIRED_DATE = -10;
+
+    const QUALITY_ZERO = 0;
+    const QUALITY_ONE = 1;
     const QUALITY_NORMAL = 10;
     const QUALITY_MAXIMUM = 50;
-    const QUALITY_ZERO = 0;
 
     public function possibleDays()
     {
         return array(
             array(BaseTest::SELL_IN_EXPIRED_DATE),
-            array(BaseTest::SELL_IN_POSITIVE_DAYS),
             array(BaseTest::SELL_IN_0_DAYS),
+            array(BaseTest::SELL_IN_5_DAYS),
+            array(BaseTest::SELL_IN_POSITIVE_DAYS),
             array(BaseTest::SELL_IN_EXPIRED_DATE),
         );
     }
@@ -36,6 +34,7 @@ abstract class BaseTest extends \PHPUnit_Framework_TestCase
     {
         return array(
             array(BaseTest::QUALITY_NORMAL),
+            array(BaseTest::QUALITY_ONE),
             array(BaseTest::QUALITY_ZERO),
             array(BaseTest::QUALITY_MAXIMUM),
         );

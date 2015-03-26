@@ -5,6 +5,7 @@ namespace LuisRovirosa\GildedRose\Test;
 
 class BackStageTest extends BaseTest
 {
+    const PRODUCT_BACKSTAGE = "Backstage passes to a TAFKAL80ETC concert";
 
     /**
      * @dataProvider backstageQualityIncrement
@@ -38,7 +39,7 @@ class BackStageTest extends BaseTest
      */
     public function shouldDecreaseTheDaysByOne($days)
     {
-        $this->createProduct(self::PRODUCT_NORMAL, $days, self::QUALITY_NORMAL);
+        $this->createProduct(self::PRODUCT_BACKSTAGE, $days, self::QUALITY_NORMAL);
         $this->nextDay();
         $this->assertExpectedDays($days - 1, "Normal product should decrease the days to expire by 1");
     }
