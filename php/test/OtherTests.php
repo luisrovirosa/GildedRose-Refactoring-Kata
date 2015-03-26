@@ -26,24 +26,6 @@ class OtherTests extends GildedRoseTest
 //    }
 
     /** @test */
-    public function shouldNotChangeTheExpectedDateInSulfuras()
-    {
-        $this->item = new Item(self::PRODUCT_SULFURAS, self::SELL_IN_POSITIVE_DAYS, self::QUALITY_NORMAL);
-        $this->expectedProductName = self::PRODUCT_SULFURAS;
-        $this->expectedQuality = self::QUALITY_NORMAL;
-        $this->expectedDate = self::SELL_IN_POSITIVE_DAYS;
-    }
-
-    /** @test */
-    public function shouldNotChangeTheExpectedDateInSulfurasInExpiredDate()
-    {
-        $this->item = new Item(self::PRODUCT_SULFURAS, self::SELL_IN_EXPIRED_DATE, self::QUALITY_NORMAL);
-        $this->expectedProductName = self::PRODUCT_SULFURAS;
-        $this->expectedQuality = self::QUALITY_NORMAL;
-        $this->expectedDate = self::SELL_IN_EXPIRED_DATE;
-    }
-
-    /** @test */
     public function shouldIncreaseTheQualityOfBackstageWhenMoreThan10Days()
     {
         $this->item = new Item(self::PRODUCT_BACKSTAGE, self::SELL_IN_MORE_THAN_10_DAYS, self::QUALITY_NORMAL);
