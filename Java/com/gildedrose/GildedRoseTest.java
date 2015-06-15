@@ -43,7 +43,6 @@ public class GildedRoseTest {
 		verifyQuality(NORMAL_ITEM_QUALITY + QUALITY_CHANGE, agedBrie());
 	}
 
-	// - The Quality of an item is never more than 50
 	@Test
 	public void item_never_increase_quality_when_has_reached_the_maximum() {
 		verifyQuality(MAXIMUM_QUALITY, agedBrieWithMaximumQuality());
