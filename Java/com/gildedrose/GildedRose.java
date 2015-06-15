@@ -1,6 +1,7 @@
 package com.gildedrose;
 
 class GildedRose {
+	private static final int MAXIMUM_QUALITY = 50;
 	private static final String SULFURAS_NAME = "Sulfuras, Hand of Ragnaros";
 	private static final String AGED_BRIE_NAME = "Aged Brie";
 	private static final String BACKSTAGE_NAME = "Backstage passes to a TAFKAL80ETC concert";
@@ -19,12 +20,12 @@ class GildedRose {
 	private void update(Item item) {
 		if (!isAgedBrie(item) && !isBackstage(item)) {
 			if (hasQuality(item)) {
-				if (!item.name.equals(SULFURAS_NAME)) {
-					item.quality = item.quality - 1;
+				if (!isSulfuras(item)) {
+					decreaseQuality(item);
 				}
 			}
 		} else {
-			if (item.quality < 50) {
+			if (item.quality < MAXIMUM_QUALITY) {
 				item.quality = item.quality + 1;
 
 				if (isBackstage(item)) {
@@ -43,7 +44,7 @@ class GildedRose {
 			}
 		}
 
-		if (!item.name.equals(SULFURAS_NAME)) {
+		if (!isSulfuras(item)) {
 			item.sellIn = item.sellIn - 1;
 		}
 
@@ -51,8 +52,8 @@ class GildedRose {
 			if (!isAgedBrie(item)) {
 				if (!isBackstage(item)) {
 					if (hasQuality(item)) {
-						if (!item.name.equals(SULFURAS_NAME)) {
-							item.quality = item.quality - 1;
+						if (!isSulfuras(item)) {
+							decreaseQuality(item);
 						}
 					}
 				} else {
@@ -64,6 +65,14 @@ class GildedRose {
 				}
 			}
 		}
+	}
+
+	private int decreaseQuality(Item item) {
+		return item.quality = item.quality - 1;
+	}
+
+	private boolean isSulfuras(Item item) {
+		return item.name.equals(SULFURAS_NAME);
 	}
 
 	private boolean hasQuality(Item item) {
