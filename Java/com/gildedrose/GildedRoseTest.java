@@ -52,8 +52,12 @@ public class GildedRoseTest {
 	// - "Sulfuras", being a legendary item, never has to be sold or decreases in Quality
 	@Test
 	public void sulfuras_never_changes_the_quality() {
-		Item item = new Item(SULFURAS_NAME, NORMAL_ITEM_SELL_IN, NORMAL_ITEM_QUALITY);
+		Item item = sulfuras();
 		verifyQuality(NORMAL_ITEM_QUALITY, item);
+	}
+
+	private Item sulfuras() {
+		return new Item(SULFURAS_NAME, NORMAL_ITEM_SELL_IN, NORMAL_ITEM_QUALITY);
 	}
 
 	// - "Backstage passes",
