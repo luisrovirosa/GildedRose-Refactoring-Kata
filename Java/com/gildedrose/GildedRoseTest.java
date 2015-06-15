@@ -49,6 +49,12 @@ public class GildedRoseTest {
 	}
 
 	// - "Sulfuras", being a legendary item, never has to be sold or decreases in Quality
+	@Test
+	public void sulfuras_never_changes_the_quality() {
+		Item item = new Item("Sulfuras, Hand of Ragnaros", NORMAL_ITEM_SELL_IN, NORMAL_ITEM_QUALITY);
+		verifyQuality(NORMAL_ITEM_QUALITY, item);
+	}
+
 	// - "Backstage passes",
 	// - Increases in Quality as it's SellIn value approaches
 	// - Quality increases by 2 when there are 10 days or less
