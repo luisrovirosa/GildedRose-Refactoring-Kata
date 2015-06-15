@@ -17,7 +17,7 @@ class GildedRose {
 
 	private void update(Item item) {
 		if (!isAgedBrie(item) && !isBackstage(item)) {
-			if (item.quality > 0) {
+			if (hasQuality(item)) {
 				if (!item.name.equals("Sulfuras, Hand of Ragnaros")) {
 					item.quality = item.quality - 1;
 				}
@@ -49,7 +49,7 @@ class GildedRose {
 		if (item.sellIn < 0) {
 			if (!isAgedBrie(item)) {
 				if (!isBackstage(item)) {
-					if (item.quality > 0) {
+					if (hasQuality(item)) {
 						if (!item.name.equals("Sulfuras, Hand of Ragnaros")) {
 							item.quality = item.quality - 1;
 						}
@@ -63,6 +63,10 @@ class GildedRose {
 				}
 			}
 		}
+	}
+
+	private boolean hasQuality(Item item) {
+		return item.quality > 0;
 	}
 
 	private boolean isBackstage(Item item) {
