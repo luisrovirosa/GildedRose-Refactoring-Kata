@@ -36,11 +36,14 @@ public class GildedRoseTest {
 		verifyQuality(MINIMUM_QUALITY, itemWithoutQuality());
 	}
 
-	// - "Aged Brie" actually increases in Quality the older it gets
 	@Test
 	public void aged_brie_increases_quality() {
-		Item item = new Item("Aged Brie", NORMAL_ITEM_SELL_IN, NORMAL_ITEM_QUALITY);
+		Item item = agedBrie();
 		verifyQuality(NORMAL_ITEM_QUALITY + QUALITY_CHANGE, item);
+	}
+
+	private Item agedBrie() {
+		return new Item("Aged Brie", NORMAL_ITEM_SELL_IN, NORMAL_ITEM_QUALITY);
 	}
 
 	// - The Quality of an item is never more than 50
