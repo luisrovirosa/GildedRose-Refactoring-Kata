@@ -10,11 +10,16 @@ public class GildedRoseTest {
 	// - Sell in decreases every day
 	@Test
 	public void sell_in_decreases_every_day() {
-		Item item = new Item("foo", 10, 5);
+		Item item = normalItem();
 		Item[] items = new Item[] { item };
 		GildedRose app = new GildedRose(items);
 		app.updateQuality();
 		assertEquals(9, app.items[0].sellIn);
+	}
+
+	private Item normalItem() {
+		Item item = new Item("foo", 10, 5);
+		return item;
 	}
 
 	// - Quality decreases every day
