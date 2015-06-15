@@ -64,12 +64,12 @@ class GildedRose {
 	}
 
 	private void ensureMaximumQualityIsNotExceded(Item item) {
-		if (hasMaximumQuality(item)) {
+		if (isQualityExceded(item)) {
 			item.quality = MAXIMUM_QUALITY;
 		}
 	}
 
-	private boolean hasMaximumQuality(Item item) {
+	private boolean isQualityExceded(Item item) {
 		return item.quality > MAXIMUM_QUALITY;
 	}
 
