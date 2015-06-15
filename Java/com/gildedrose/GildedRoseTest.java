@@ -33,8 +33,7 @@ public class GildedRoseTest {
 	// - The Quality of an item is never negative
 	@Test
 	public void quality_is_never_negative() {
-		Item item = itemWithoutQuality();
-		verifyQuality(0, item);
+		verifyQuality(0, itemWithoutQuality());
 	}
 
 	// - "Aged Brie" actually increases in Quality the older it gets
