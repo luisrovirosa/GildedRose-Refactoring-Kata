@@ -7,6 +7,7 @@ import org.junit.Test;
 public class GildedRoseTest {
 
 	private static final String NORMAL_ITEM_NAME = "foo";
+	private static final String AGED_BRIE_NAME = "Aged Brie";
 
 	private static final int QUALITY_CHANGE = 1;
 	private static final int NORMAL_ITEM_QUALITY = 5;
@@ -39,10 +40,6 @@ public class GildedRoseTest {
 	@Test
 	public void aged_brie_increases_quality() {
 		verifyQuality(NORMAL_ITEM_QUALITY + QUALITY_CHANGE, agedBrie());
-	}
-
-	private Item agedBrie() {
-		return new Item("Aged Brie", NORMAL_ITEM_SELL_IN, NORMAL_ITEM_QUALITY);
 	}
 
 	// - The Quality of an item is never more than 50
@@ -81,6 +78,10 @@ public class GildedRoseTest {
 
 	private Item itemWithoutQuality() {
 		return new Item(NORMAL_ITEM_NAME, NORMAL_ITEM_SELL_IN, MINIMUM_QUALITY);
+	}
+
+	private Item agedBrie() {
+		return new Item(AGED_BRIE_NAME, NORMAL_ITEM_SELL_IN, NORMAL_ITEM_QUALITY);
 	}
 
 	private void assertSellIn(int expectedSellIn, GildedRose app) {
