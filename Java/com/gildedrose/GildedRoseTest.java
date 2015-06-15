@@ -82,6 +82,12 @@ public class GildedRoseTest {
 		verifyQuality(MINIMUM_QUALITY, backstageAfterTheConcert());
 	}
 
+	@Test
+	public void aged_brie_expired_gets_the_maximum_quality_when_has_the_quality_minus_1() {
+		Item item = new Item(AGED_BRIE_NAME, EXPIRED_SELL_IN, MAXIMUM_QUALITY - 1);
+		verifyQuality(MAXIMUM_QUALITY, item);
+	}
+
 	private void verifySellIn(int expectedSellIn, Item item) {
 		GildedRose gildedRose = gildedRose(item);
 		gildedRose.updateQuality();
