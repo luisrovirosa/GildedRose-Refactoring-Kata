@@ -13,7 +13,7 @@ public class GildedRoseTest {
 		GildedRose app = gildedRose(normalItem());
 		int expectedSellIn = 9;
 		app.updateQuality();
-		assertSellIn(app, expectedSellIn);
+		assertSellIn(expectedSellIn, app);
 	}
 
 	// - Quality decreases every day
@@ -47,7 +47,7 @@ public class GildedRoseTest {
 		return item;
 	}
 
-	private void assertSellIn(GildedRose app, int expectedSellIn) {
+	private void assertSellIn(int expectedSellIn, GildedRose app) {
 		assertEquals(expectedSellIn, app.items[0].sellIn);
 	}
 
