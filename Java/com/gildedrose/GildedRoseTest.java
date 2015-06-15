@@ -79,7 +79,6 @@ public class GildedRoseTest {
 		verifyQuality(NORMAL_ITEM_QUALITY + 3 * QUALITY_CHANGE, backstageIn5Days());
 	}
 
-	// - Quality drops to 0 after the concert
 	@Test
 	public void backstage_drops_to_0_quality_after_the_concert() {
 		Item item = itemWithNormalQuality(BACKSTAGE_NAME, EXPIRED_SELL_IN);
