@@ -26,8 +26,13 @@ public class GildedRoseTest {
 	// - Once the sell by date has passed, Quality degrades twice as fast
 	@Test
 	public void quality_decreases_twice_as_fast_one_sell_in_has_passed() {
-		Item expiredItem = new Item("foo", EXPIRED_SELL_IN, NORMAL_ITEM_QUALITY);
+		Item expiredItem = expiredItem();
 		verifyQuality(NORMAL_ITEM_QUALITY + 2 * DEFAULT_QUALITY_CHANGE, expiredItem);
+	}
+
+	private Item expiredItem() {
+		Item expiredItem = new Item("foo", EXPIRED_SELL_IN, NORMAL_ITEM_QUALITY);
+		return expiredItem;
 	}
 
 	// - The Quality of an item is never negative
