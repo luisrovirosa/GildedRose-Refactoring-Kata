@@ -14,9 +14,9 @@ public class GildedRoseTest {
 	}
 
 	private void verifySellIn(int expectedSellIn, Item item) {
-		GildedRose app = gildedRose(item);
-		app.updateQuality();
-		assertSellIn(expectedSellIn, app);
+		GildedRose gildedRose = gildedRose(item);
+		gildedRose.updateQuality();
+		assertSellIn(expectedSellIn, gildedRose);
 	}
 
 	// - Quality decreases every day
