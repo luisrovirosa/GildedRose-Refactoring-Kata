@@ -43,6 +43,12 @@ public class GildedRoseTest {
 	}
 
 	// - The Quality of an item is never more than 50
+	@Test
+	public void item_never_increase_quality_when_has_reached_the_maximum() {
+		Item item = new Item(AGED_BRIE_NAME, NORMAL_ITEM_SELL_IN, 50);
+		verifyQuality(50, item);
+	}
+
 	// - "Sulfuras", being a legendary item, never has to be sold or decreases in Quality
 	// - "Backstage passes",
 	// - Increases in Quality as it's SellIn value approaches
