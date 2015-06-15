@@ -17,7 +17,7 @@ public class GildedRoseTest {
 
 	private static final int SELL_IN_CHANGE = 1;
 	private static final int EXPIRED_SELL_IN = 0;
-	private static final int NORMAL_ITEM_SELL_IN = 10;
+	private static final int NORMAL_ITEM_SELL_IN = 15;
 
 	@Test
 	public void sell_in_decreases_every_day() {
@@ -61,7 +61,15 @@ public class GildedRoseTest {
 
 	// - "Backstage passes",
 	// - Increases in Quality as it's SellIn value approaches
+	@Test
+	public void backstage_increase_quality() {
+		Item item = itemWithNormalSellInAndQuality("Backstage passes to a TAFKAL80ETC concert");
+		verifyQuality(NORMAL_ITEM_QUALITY + QUALITY_CHANGE, item);
+
+	}
+
 	// - Quality increases by 2 when there are 10 days or less
+
 	// - By 3 when there are 5 days or less but
 	// - Quality drops to 0 after the concert
 
