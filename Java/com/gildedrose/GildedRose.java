@@ -1,7 +1,8 @@
 package com.gildedrose;
 
 class GildedRose {
-    Item[] items;
+    private static final String AGED_BRIE_NAME = "Aged Brie";
+	Item[] items;
 
     public GildedRose(Item[] items) {
         this.items = items;
@@ -14,7 +15,7 @@ class GildedRose {
     }
 
 	private void update(Item item) {
-		if (!item.name.equals("Aged Brie")
+		if (!item.name.equals(AGED_BRIE_NAME)
 		        && !item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
 		    if (item.quality > 0) {
 		        if (!item.name.equals("Sulfuras, Hand of Ragnaros")) {
@@ -46,7 +47,7 @@ class GildedRose {
 		}
 
 		if (item.sellIn < 0) {
-		    if (!item.name.equals("Aged Brie")) {
+		    if (!item.name.equals(AGED_BRIE_NAME)) {
 		        if (!item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
 		            if (item.quality > 0) {
 		                if (!item.name.equals("Sulfuras, Hand of Ragnaros")) {
