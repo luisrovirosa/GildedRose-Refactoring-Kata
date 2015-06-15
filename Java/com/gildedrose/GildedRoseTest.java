@@ -12,6 +12,7 @@ public class GildedRoseTest {
 	private static final int QUALITY_CHANGE = 1;
 	private static final int NORMAL_ITEM_QUALITY = 5;
 	private static final int MINIMUM_QUALITY = 0;
+	private static final int MAXIMUM_QUALITY = 50;
 
 	private static final int SELL_IN_CHANGE = 1;
 	private static final int EXPIRED_SELL_IN = 0;
@@ -45,7 +46,7 @@ public class GildedRoseTest {
 	// - The Quality of an item is never more than 50
 	@Test
 	public void item_never_increase_quality_when_has_reached_the_maximum() {
-		verifyQuality(50, agedBrieWithMaximumQuality());
+		verifyQuality(MAXIMUM_QUALITY, agedBrieWithMaximumQuality());
 	}
 
 	// - "Sulfuras", being a legendary item, never has to be sold or decreases in Quality
@@ -90,7 +91,7 @@ public class GildedRoseTest {
 	}
 
 	private Item agedBrieWithMaximumQuality() {
-		return new Item(AGED_BRIE_NAME, NORMAL_ITEM_SELL_IN, 50);
+		return new Item(AGED_BRIE_NAME, NORMAL_ITEM_SELL_IN, MAXIMUM_QUALITY);
 	}
 
 	private void assertSellIn(int expectedSellIn, GildedRose app) {
