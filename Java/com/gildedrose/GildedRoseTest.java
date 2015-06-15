@@ -80,6 +80,11 @@ public class GildedRoseTest {
 	}
 
 	// - Quality drops to 0 after the concert
+	@Test
+	public void backstage_drops_to_0_quality_after_the_concert() {
+		Item item = itemWithNormalQuality(BACKSTAGE_NAME, EXPIRED_SELL_IN);
+		verifyQuality(MINIMUM_QUALITY, item);
+	}
 
 	private void verifySellIn(int expectedSellIn, Item item) {
 		GildedRose gildedRose = gildedRose(item);
