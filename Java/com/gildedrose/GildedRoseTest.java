@@ -6,7 +6,6 @@ import org.junit.Test;
 
 public class GildedRoseTest {
 
-	private static final int SELL_IN_IN_10_DAYS = 10;
 	private static final String BACKSTAGE_NAME = "Backstage passes to a TAFKAL80ETC concert";
 	private static final String NORMAL_ITEM_NAME = "foo";
 	private static final String AGED_BRIE_NAME = "Aged Brie";
@@ -20,6 +19,8 @@ public class GildedRoseTest {
 	private static final int SELL_IN_CHANGE = 1;
 	private static final int EXPIRED_SELL_IN = 0;
 	private static final int NORMAL_ITEM_SELL_IN = 15;
+	private static final int SELL_IN_IN_5_DAYS = 5;
+	private static final int SELL_IN_IN_10_DAYS = 10;
 
 	@Test
 	public void sell_in_decreases_every_day() {
@@ -79,10 +80,6 @@ public class GildedRoseTest {
 		verifyQuality(NORMAL_ITEM_QUALITY + 3 * QUALITY_CHANGE, backstageIn5Days());
 	}
 
-	private Item backstageIn5Days() {
-		return new Item(BACKSTAGE_NAME, 5, NORMAL_ITEM_QUALITY);
-	}
-
 	// - Quality drops to 0 after the concert
 
 	private void verifySellIn(int expectedSellIn, Item item) {
@@ -133,6 +130,10 @@ public class GildedRoseTest {
 
 	private Item backstageInIn10Days() {
 		return new Item(BACKSTAGE_NAME, SELL_IN_IN_10_DAYS, NORMAL_ITEM_QUALITY);
+	}
+
+	private Item backstageIn5Days() {
+		return new Item(BACKSTAGE_NAME, SELL_IN_IN_5_DAYS, NORMAL_ITEM_QUALITY);
 	}
 
 	private Item itemWithNormalSellInAndQuality(String name) {
