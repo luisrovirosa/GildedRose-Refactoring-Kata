@@ -37,6 +37,12 @@ public class GildedRoseTest {
 	}
 
 	// - "Aged Brie" actually increases in Quality the older it gets
+	@Test
+	public void aged_brie_increases_quality() {
+		Item item = new Item("Aged Brie", NORMAL_ITEM_SELL_IN, NORMAL_ITEM_QUALITY);
+		verifyQuality(NORMAL_ITEM_QUALITY + QUALITY_CHANGE, item);
+	}
+
 	// - The Quality of an item is never more than 50
 	// - "Sulfuras", being a legendary item, never has to be sold or decreases in Quality
 	// - "Backstage passes",
