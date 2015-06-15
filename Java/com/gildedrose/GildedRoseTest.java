@@ -49,7 +49,6 @@ public class GildedRoseTest {
 		verifyQuality(MAXIMUM_QUALITY, agedBrieWithMaximumQuality());
 	}
 
-	// - "Sulfuras", being a legendary item, never has to be sold or decreases in Quality
 	@Test
 	public void sulfuras_never_changes_the_quality() {
 		verifyQuality(NORMAL_ITEM_QUALITY, sulfuras());
@@ -57,7 +56,7 @@ public class GildedRoseTest {
 
 	@Test
 	public void sulfuras_never_changes_the_sell_in() {
-		verifyQuality(NORMAL_ITEM_SELL_IN, sulfuras());
+		verifySellIn(NORMAL_ITEM_SELL_IN, sulfuras());
 	}
 
 	// - "Backstage passes",
