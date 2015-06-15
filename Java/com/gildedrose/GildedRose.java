@@ -60,10 +60,13 @@ class GildedRose {
 
 	private void increaseQuality(Item item, int increment) {
 		item.quality = item.quality + increment;
+		ensureMaximumQualityIsNotExceded(item);
+	}
+
+	private void ensureMaximumQualityIsNotExceded(Item item) {
 		if (hasMaximumQuality(item)) {
 			item.quality = MAXIMUM_QUALITY;
 		}
-
 	}
 
 	private boolean hasMaximumQuality(Item item) {
