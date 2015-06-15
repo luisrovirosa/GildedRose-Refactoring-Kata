@@ -81,8 +81,7 @@ public class GildedRoseTest {
 
 	@Test
 	public void backstage_drops_to_0_quality_after_the_concert() {
-		Item item = backstageAfterTheConcert();
-		verifyQuality(MINIMUM_QUALITY, item);
+		verifyQuality(MINIMUM_QUALITY, backstageAfterTheConcert());
 	}
 
 	private void verifySellIn(int expectedSellIn, Item item) {
