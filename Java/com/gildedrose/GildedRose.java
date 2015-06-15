@@ -25,18 +25,21 @@ class GildedRose {
 			int increment = hasExpired(item) ? 2 : 1;
 			increaseQuality(item, increment);
 		} else if (isBackstage(item)) {
-			int increment = 0;
 			if (hasExpired(item)) {
 				removeAllQuality(item);
-			} else if (item.sellIn <= FIVE_DAYS) {
-				increment = 3;
-			} else if (item.sellIn <= TEN_DAYS) {
-				increment = 2;
 			} else {
-				increment = 1;
+				int increment;
+				if (item.sellIn <= FIVE_DAYS) {
+					increment = 3;
+				} else if (item.sellIn <= TEN_DAYS) {
+					increment = 2;
+				} else {
+					increment = 1;
+				}
+				increaseQuality(item, increment);
 			}
-			increaseQuality(item, increment);
-		} else if (!isSulfuras(item)) {
+		} else if (isSulfuras(item)) {
+		} else {
 			decreaseQuality(item);
 			if (hasExpired(item)) {
 				decreaseQuality(item);
