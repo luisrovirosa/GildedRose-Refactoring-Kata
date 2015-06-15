@@ -6,6 +6,8 @@ import org.junit.Test;
 
 public class GildedRoseTest {
 
+	private static final int DEFAULT_QUALITY_CHANGE = -1;
+	private static final int DEFAULT_SELL_IN_CHANGE = -1;
 	private static final int NORMAL_ITEM_QUALITY = 5;
 	private static final int NORMAL_ITEM_SELL_IN = 10;
 
@@ -13,13 +15,13 @@ public class GildedRoseTest {
 	// - Sell in decreases every day
 	@Test
 	public void sell_in_decreases_every_day() {
-		verifySellIn(9, normalItem());
+		verifySellIn(NORMAL_ITEM_SELL_IN + DEFAULT_SELL_IN_CHANGE, normalItem());
 	}
 
 	// - Quality decreases every day
 	@Test
 	public void quality_decreases_every_day() {
-		verifyQuality(4, normalItem());
+		verifyQuality(NORMAL_ITEM_QUALITY + DEFAULT_QUALITY_CHANGE, normalItem());
 	}
 
 	private void verifyQuality(int expectedQuality, Item normalItem) {
