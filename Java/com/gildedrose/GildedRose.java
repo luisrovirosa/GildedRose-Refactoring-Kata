@@ -20,7 +20,9 @@ class GildedRose {
 	}
 
 	private void update(Item item) {
-		if (!isAgedBrie(item) && !isBackstage(item)) {
+		if (isAgedBrie(item)) {
+			increaseQuality(item);
+		} else if (!isAgedBrie(item) && !isBackstage(item)) {
 			if (!isSulfuras(item)) {
 				decreaseQuality(item);
 			}
