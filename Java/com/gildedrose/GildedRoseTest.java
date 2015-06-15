@@ -6,6 +6,9 @@ import org.junit.Test;
 
 public class GildedRoseTest {
 
+	private static final int NORMAL_ITEM_QUALITY = 5;
+	private static final int NORMAL_ITEM_SELL_IN = 10;
+
 	// Every day:
 	// - Sell in decreases every day
 	@Test
@@ -53,7 +56,7 @@ public class GildedRoseTest {
 	}
 
 	private Item normalItem() {
-		Item item = new Item("foo", 10, 5);
+		Item item = new Item("foo", NORMAL_ITEM_SELL_IN, NORMAL_ITEM_QUALITY);
 		return item;
 	}
 
