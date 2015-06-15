@@ -25,7 +25,7 @@ class GildedRose {
 				}
 			}
 		} else {
-			if (item.quality < MAXIMUM_QUALITY) {
+			if (hasNotMaximumQuality(item)) {
 				item.quality = item.quality + 1;
 
 				if (isBackstage(item)) {
@@ -65,6 +65,10 @@ class GildedRose {
 				}
 			}
 		}
+	}
+
+	private boolean hasNotMaximumQuality(Item item) {
+		return item.quality < MAXIMUM_QUALITY;
 	}
 
 	private int decreaseQuality(Item item) {
