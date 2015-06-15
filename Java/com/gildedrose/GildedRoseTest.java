@@ -137,8 +137,7 @@ public class GildedRoseTest {
 	}
 
 	private Item itemWithNormalSellInAndQuality(String name) {
-		int sellIn = NORMAL_ITEM_SELL_IN;
-		return itemWithNormalQuality(name, sellIn);
+		return itemWithNormalQuality(name, NORMAL_ITEM_SELL_IN);
 	}
 
 	private Item itemWithNormalQuality(String name, int sellIn) {
