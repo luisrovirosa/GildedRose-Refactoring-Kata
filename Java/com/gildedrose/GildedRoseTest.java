@@ -6,6 +6,7 @@ import org.junit.Test;
 
 public class GildedRoseTest {
 
+	private static final String BACKSTAGE_NAME = "Backstage passes to a TAFKAL80ETC concert";
 	private static final String NORMAL_ITEM_NAME = "foo";
 	private static final String AGED_BRIE_NAME = "Aged Brie";
 	private static final String SULFURAS_NAME = "Sulfuras, Hand of Ragnaros";
@@ -66,10 +67,6 @@ public class GildedRoseTest {
 		verifyQuality(NORMAL_ITEM_QUALITY + QUALITY_CHANGE, backstage());
 	}
 
-	private Item backstage() {
-		return itemWithNormalSellInAndQuality("Backstage passes to a TAFKAL80ETC concert");
-	}
-
 	// - Quality increases by 2 when there are 10 days or less
 
 	// - By 3 when there are 5 days or less but
@@ -115,6 +112,10 @@ public class GildedRoseTest {
 
 	private Item sulfuras() {
 		return itemWithNormalSellInAndQuality(SULFURAS_NAME);
+	}
+
+	private Item backstage() {
+		return itemWithNormalSellInAndQuality(BACKSTAGE_NAME);
 	}
 
 	private Item itemWithNormalSellInAndQuality(String name) {
