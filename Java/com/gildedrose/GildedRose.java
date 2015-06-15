@@ -65,31 +65,30 @@ class GildedRose {
 		}
 	}
 
-	private int removeAllQuality(Item item) {
-		return item.quality = item.quality - item.quality;
+	private void removeAllQuality(Item item) {
+		item.quality = item.quality - item.quality;
 	}
 
 	private boolean hasExpired(Item item) {
 		return item.sellIn < 0;
 	}
 
-	private int decreaseSellIn(Item item) {
-		return item.sellIn = item.sellIn - 1;
+	private void decreaseSellIn(Item item) {
+		item.sellIn = item.sellIn - 1;
 	}
 
-	private int increaseQuality(Item item) {
-		return item.quality = item.quality + 1;
+	private void increaseQuality(Item item) {
+		item.quality = item.quality + 1;
 	}
 
 	private boolean hasNotMaximumQuality(Item item) {
 		return item.quality < MAXIMUM_QUALITY;
 	}
 
-	private int decreaseQuality(Item item) {
+	private void decreaseQuality(Item item) {
 		if (hasQuality(item)) {
 			item.quality = item.quality - 1;
 		}
-		return item.quality;
 	}
 
 	private boolean isSulfuras(Item item) {
