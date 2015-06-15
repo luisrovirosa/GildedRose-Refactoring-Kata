@@ -8,6 +8,7 @@ public class GildedRoseTest {
 
 	private static final String NORMAL_ITEM_NAME = "foo";
 	private static final String AGED_BRIE_NAME = "Aged Brie";
+	private static final String SULFURAS_NAME = "Sulfuras, Hand of Ragnaros";
 
 	private static final int QUALITY_CHANGE = 1;
 	private static final int NORMAL_ITEM_QUALITY = 5;
@@ -51,7 +52,7 @@ public class GildedRoseTest {
 	// - "Sulfuras", being a legendary item, never has to be sold or decreases in Quality
 	@Test
 	public void sulfuras_never_changes_the_quality() {
-		Item item = new Item("Sulfuras, Hand of Ragnaros", NORMAL_ITEM_SELL_IN, NORMAL_ITEM_QUALITY);
+		Item item = new Item(SULFURAS_NAME, NORMAL_ITEM_SELL_IN, NORMAL_ITEM_QUALITY);
 		verifyQuality(NORMAL_ITEM_QUALITY, item);
 	}
 
