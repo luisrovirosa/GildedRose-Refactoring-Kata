@@ -74,6 +74,13 @@ public class GildedRoseTest {
 	}
 
 	// - By 3 when there are 5 days or less but
+	@Test
+	public void backstage_increase_quality_by_3_when_sell_in_is_5_or_less() {
+		Item item = new Item(BACKSTAGE_NAME, 5, NORMAL_ITEM_QUALITY);
+
+		verifyQuality(NORMAL_ITEM_QUALITY + 3 * QUALITY_CHANGE, item);
+	}
+
 	// - Quality drops to 0 after the concert
 
 	private void verifySellIn(int expectedSellIn, Item item) {
