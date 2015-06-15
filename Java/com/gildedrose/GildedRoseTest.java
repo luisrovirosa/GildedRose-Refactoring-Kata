@@ -16,9 +16,7 @@ public class GildedRoseTest {
 	// - Quality decreases every day
 	@Test
 	public void quality_decreases_every_day() {
-		Item normalItem = normalItem();
-		int expectedQuality = 4;
-		verifyQuality(expectedQuality, normalItem);
+		verifyQuality(4, normalItem());
 	}
 
 	private void verifyQuality(int expectedQuality, Item normalItem) {
