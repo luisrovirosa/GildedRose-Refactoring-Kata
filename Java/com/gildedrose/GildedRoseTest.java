@@ -45,7 +45,7 @@ public class GildedRoseTest {
 	// - The Quality of an item is never more than 50
 	@Test
 	public void item_never_increase_quality_when_has_reached_the_maximum() {
-		Item item = new Item(AGED_BRIE_NAME, NORMAL_ITEM_SELL_IN, 50);
+		Item item = agedBrieWithMaximumQuality();
 		verifyQuality(50, item);
 	}
 
@@ -88,6 +88,10 @@ public class GildedRoseTest {
 
 	private Item agedBrie() {
 		return new Item(AGED_BRIE_NAME, NORMAL_ITEM_SELL_IN, NORMAL_ITEM_QUALITY);
+	}
+
+	private Item agedBrieWithMaximumQuality() {
+		return new Item(AGED_BRIE_NAME, NORMAL_ITEM_SELL_IN, 50);
 	}
 
 	private void assertSellIn(int expectedSellIn, GildedRose app) {
