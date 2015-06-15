@@ -59,7 +59,7 @@ class GildedRose {
 						}
 					}
 				} else {
-					item.quality = item.quality - item.quality;
+					removeAllQuality(item);
 				}
 			} else {
 				if (hasNotMaximumQuality(item)) {
@@ -67,6 +67,10 @@ class GildedRose {
 				}
 			}
 		}
+	}
+
+	private int removeAllQuality(Item item) {
+		return item.quality = item.quality - item.quality;
 	}
 
 	private boolean hasExpired(Item item) {
