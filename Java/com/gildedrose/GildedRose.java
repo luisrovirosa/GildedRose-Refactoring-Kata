@@ -24,15 +24,12 @@ class GildedRose {
 			increaseQuality(item);
 		} else if (isBackstage(item)) {
 			increaseQuality(item);
+			if (item.sellIn <= TEN_DAYS) {
+				increaseQuality(item);
+			}
 
-			if (isBackstage(item)) {
-				if (item.sellIn <= TEN_DAYS) {
-					increaseQuality(item);
-				}
-
-				if (item.sellIn <= FIVE_DAYS) {
-					increaseQuality(item);
-				}
+			if (item.sellIn <= FIVE_DAYS) {
+				increaseQuality(item);
 			}
 		} else if (!isSulfuras(item)) {
 			decreaseQuality(item);
