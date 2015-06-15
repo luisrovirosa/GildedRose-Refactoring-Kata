@@ -6,6 +6,8 @@ import org.junit.Test;
 
 public class GildedRoseTest {
 
+	private static final String NORMAL_ITEM_NAME = "foo";
+
 	private static final int DEFAULT_QUALITY_CHANGE = -1;
 	private static final int NORMAL_ITEM_QUALITY = 5;
 
@@ -57,11 +59,11 @@ public class GildedRoseTest {
 	}
 
 	private Item normalItem() {
-		return new Item("foo", NORMAL_ITEM_SELL_IN, NORMAL_ITEM_QUALITY);
+		return new Item(NORMAL_ITEM_NAME, NORMAL_ITEM_SELL_IN, NORMAL_ITEM_QUALITY);
 	}
 
 	private Item expiredItem() {
-		return new Item("foo", EXPIRED_SELL_IN, NORMAL_ITEM_QUALITY);
+		return new Item(NORMAL_ITEM_NAME, EXPIRED_SELL_IN, NORMAL_ITEM_QUALITY);
 	}
 
 	private void assertSellIn(int expectedSellIn, GildedRose app) {
