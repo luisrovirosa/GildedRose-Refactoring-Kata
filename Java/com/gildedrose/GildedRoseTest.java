@@ -13,8 +13,8 @@ public class GildedRoseTest {
 		verifySellIn(9, normalItem());
 	}
 
-	private void verifySellIn(int expectedSellIn, Item normalItem) {
-		GildedRose app = gildedRose(normalItem);
+	private void verifySellIn(int expectedSellIn, Item item) {
+		GildedRose app = gildedRose(item);
 		app.updateQuality();
 		assertSellIn(expectedSellIn, app);
 	}
