@@ -38,12 +38,15 @@ class GildedRose {
 				}
 				increaseQuality(item, increment);
 			}
-		} else if (isSulfuras(item)) {
-		} else {
+		} else if (!isSulfuras(item)) {
+			processNormalItem(item);
+		}
+	}
+
+	private void processNormalItem(Item item) {
+		decreaseQuality(item);
+		if (hasExpired(item)) {
 			decreaseQuality(item);
-			if (hasExpired(item)) {
-				decreaseQuality(item);
-			}
 		}
 	}
 
