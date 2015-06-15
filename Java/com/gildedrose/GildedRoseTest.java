@@ -33,7 +33,7 @@ public class GildedRoseTest {
 	// - The Quality of an item is never negative
 	@Test
 	public void quality_is_never_negative() {
-		Item item = new Item(NORMAL_ITEM_NAME, DEFAULT_SELL_IN_CHANGE, 0);
+		Item item = itemWithoutQuality();
 		verifyQuality(0, item);
 	}
 
@@ -70,6 +70,10 @@ public class GildedRoseTest {
 
 	private Item expiredItem() {
 		return new Item(NORMAL_ITEM_NAME, EXPIRED_SELL_IN, NORMAL_ITEM_QUALITY);
+	}
+
+	private Item itemWithoutQuality() {
+		return new Item(NORMAL_ITEM_NAME, NORMAL_ITEM_SELL_IN, 0);
 	}
 
 	private void assertSellIn(int expectedSellIn, GildedRose app) {
