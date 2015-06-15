@@ -62,8 +62,6 @@ public class GildedRoseTest {
 		verifySellIn(NORMAL_ITEM_SELL_IN, sulfuras());
 	}
 
-	// - "Backstage passes",
-	// - Increases in Quality as it's SellIn value approaches
 	@Test
 	public void backstage_increase_quality() {
 		verifyQuality(NORMAL_ITEM_QUALITY + QUALITY_CHANGE, backstage());
