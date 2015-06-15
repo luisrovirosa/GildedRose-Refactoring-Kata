@@ -55,10 +55,6 @@ public class GildedRoseTest {
 		verifyQuality(NORMAL_ITEM_QUALITY, sulfuras());
 	}
 
-	private Item sulfuras() {
-		return new Item(SULFURAS_NAME, NORMAL_ITEM_SELL_IN, NORMAL_ITEM_QUALITY);
-	}
-
 	// - "Backstage passes",
 	// - Increases in Quality as it's SellIn value approaches
 	// - Quality increases by 2 when there are 10 days or less
@@ -96,11 +92,15 @@ public class GildedRoseTest {
 	}
 
 	private Item agedBrie() {
-		return new Item(AGED_BRIE_NAME, NORMAL_ITEM_SELL_IN, NORMAL_ITEM_QUALITY);
+		return itemWithNormalSellInAndQuality(AGED_BRIE_NAME);
 	}
 
 	private Item agedBrieWithMaximumQuality() {
 		return new Item(AGED_BRIE_NAME, NORMAL_ITEM_SELL_IN, MAXIMUM_QUALITY);
+	}
+
+	private Item sulfuras() {
+		return itemWithNormalSellInAndQuality(SULFURAS_NAME);
 	}
 
 	private Item itemWithNormalSellInAndQuality(String name) {
