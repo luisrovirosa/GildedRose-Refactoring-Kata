@@ -16,7 +16,7 @@ class GildedRose {
 	}
 
 	private void update(Item item) {
-		if (!item.name.equals(AGED_BRIE_NAME) && !item.name.equals(BACKSTAGE_NAME)) {
+		if (!isAgedBrie(item) && !item.name.equals(BACKSTAGE_NAME)) {
 			if (item.quality > 0) {
 				if (!item.name.equals("Sulfuras, Hand of Ragnaros")) {
 					item.quality = item.quality - 1;
@@ -47,7 +47,7 @@ class GildedRose {
 		}
 
 		if (item.sellIn < 0) {
-			if (!item.name.equals(AGED_BRIE_NAME)) {
+			if (!isAgedBrie(item)) {
 				if (!item.name.equals(BACKSTAGE_NAME)) {
 					if (item.quality > 0) {
 						if (!item.name.equals("Sulfuras, Hand of Ragnaros")) {
@@ -63,5 +63,9 @@ class GildedRose {
 				}
 			}
 		}
+	}
+
+	private boolean isAgedBrie(Item item) {
+		return item.name.equals(AGED_BRIE_NAME);
 	}
 }
