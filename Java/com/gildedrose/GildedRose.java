@@ -1,6 +1,7 @@
 package com.gildedrose;
 
 class GildedRose {
+	private static final int TEN_DAYS = 10;
 	private static final int MAXIMUM_QUALITY = 50;
 	private static final String SULFURAS_NAME = "Sulfuras, Hand of Ragnaros";
 	private static final String AGED_BRIE_NAME = "Aged Brie";
@@ -29,7 +30,7 @@ class GildedRose {
 				increaseQuality(item);
 
 				if (isBackstage(item)) {
-					if (item.sellIn <= 10) {
+					if (item.sellIn <= TEN_DAYS) {
 						if (hasNotMaximumQuality(item)) {
 							increaseQuality(item);
 						}
