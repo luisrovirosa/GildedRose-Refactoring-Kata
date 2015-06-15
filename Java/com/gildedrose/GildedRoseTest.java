@@ -63,9 +63,13 @@ public class GildedRoseTest {
 	// - Increases in Quality as it's SellIn value approaches
 	@Test
 	public void backstage_increase_quality() {
-		Item item = itemWithNormalSellInAndQuality("Backstage passes to a TAFKAL80ETC concert");
+		Item item = backstage();
 		verifyQuality(NORMAL_ITEM_QUALITY + QUALITY_CHANGE, item);
 
+	}
+
+	private Item backstage() {
+		return itemWithNormalSellInAndQuality("Backstage passes to a TAFKAL80ETC concert");
 	}
 
 	// - Quality increases by 2 when there are 10 days or less
