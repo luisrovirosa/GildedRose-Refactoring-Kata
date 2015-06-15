@@ -31,6 +31,12 @@ public class GildedRoseTest {
 	}
 
 	// - The Quality of an item is never negative
+	@Test
+	public void quality_is_never_negative() {
+		Item item = new Item(NORMAL_ITEM_NAME, DEFAULT_SELL_IN_CHANGE, 0);
+		verifyQuality(0, item);
+	}
+
 	// - "Aged Brie" actually increases in Quality the older it gets
 	// - The Quality of an item is never more than 50
 	// - "Sulfuras", being a legendary item, never has to be sold or decreases in Quality
