@@ -8,27 +8,27 @@ public class GildedRoseTest {
 
 	private static final String NORMAL_ITEM_NAME = "foo";
 
-	private static final int DEFAULT_QUALITY_CHANGE = -1;
+	private static final int QUALITY_CHANGE = 1;
 	private static final int NORMAL_ITEM_QUALITY = 5;
 	private static final int MINIMUM_QUALITY = 0;
 
-	private static final int DEFAULT_SELL_IN_CHANGE = -1;
+	private static final int SELL_IN_CHANGE = 1;
 	private static final int EXPIRED_SELL_IN = 0;
 	private static final int NORMAL_ITEM_SELL_IN = 10;
 
 	@Test
 	public void sell_in_decreases_every_day() {
-		verifySellIn(NORMAL_ITEM_SELL_IN + DEFAULT_SELL_IN_CHANGE, normalItem());
+		verifySellIn(NORMAL_ITEM_SELL_IN - SELL_IN_CHANGE, normalItem());
 	}
 
 	@Test
 	public void quality_decreases_every_day() {
-		verifyQuality(NORMAL_ITEM_QUALITY + DEFAULT_QUALITY_CHANGE, normalItem());
+		verifyQuality(NORMAL_ITEM_QUALITY - QUALITY_CHANGE, normalItem());
 	}
 
 	@Test
 	public void quality_decreases_twice_as_fast_one_sell_in_has_passed() {
-		verifyQuality(NORMAL_ITEM_QUALITY + 2 * DEFAULT_QUALITY_CHANGE, expiredItem());
+		verifyQuality(NORMAL_ITEM_QUALITY - 2 * QUALITY_CHANGE, expiredItem());
 	}
 
 	@Test
