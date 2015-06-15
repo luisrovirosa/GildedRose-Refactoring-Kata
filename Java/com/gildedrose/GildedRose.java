@@ -21,8 +21,8 @@ class GildedRose {
 
 	private void update(Item item) {
 		if (!isAgedBrie(item) && !isBackstage(item)) {
-			if (hasQuality(item)) {
-				if (!isSulfuras(item)) {
+			if (!isSulfuras(item)) {
+				if (hasQuality(item)) {
 					decreaseQuality(item);
 				}
 			}
