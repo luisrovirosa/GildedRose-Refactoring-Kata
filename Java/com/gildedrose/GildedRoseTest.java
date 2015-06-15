@@ -10,8 +10,11 @@ public class GildedRoseTest {
 	// - Sell in decreases every day
 	@Test
 	public void sell_in_decreases_every_day() {
-		GildedRose app = gildedRose(normalItem());
-		int expectedSellIn = 9;
+		verifySellIn(9, normalItem());
+	}
+
+	private void verifySellIn(int expectedSellIn, Item normalItem) {
+		GildedRose app = gildedRose(normalItem);
 		app.updateQuality();
 		assertSellIn(expectedSellIn, app);
 	}
