@@ -29,14 +29,14 @@ class GildedRose {
 				increaseQuality(item);
 
 				if (isBackstage(item)) {
-					if (item.sellIn < 11) {
-						if (item.quality < 50) {
+					if (item.sellIn <= 10) {
+						if (hasNotMaximumQuality(item)) {
 							increaseQuality(item);
 						}
 					}
 
 					if (item.sellIn < 6) {
-						if (item.quality < 50) {
+						if (hasNotMaximumQuality(item)) {
 							increaseQuality(item);
 						}
 					}
