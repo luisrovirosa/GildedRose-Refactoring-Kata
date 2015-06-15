@@ -11,10 +11,15 @@ public class GildedRoseTest {
 	@Test
 	public void sell_in_decreases_every_day() {
 		Item item = normalItem();
-		Item[] items = new Item[] { item };
-		GildedRose app = new GildedRose(items);
+		GildedRose app = gildedRose(item);
 		app.updateQuality();
 		assertEquals(9, app.items[0].sellIn);
+	}
+
+	private GildedRose gildedRose(Item item) {
+		Item[] items = new Item[] { item };
+		GildedRose app = new GildedRose(items);
+		return app;
 	}
 
 	private Item normalItem() {
