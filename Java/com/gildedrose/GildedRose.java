@@ -41,7 +41,9 @@ class GildedRose {
 		decreaseSellIn(item);
 
 		if (hasExpired(item)) {
-			if (!isAgedBrie(item)) {
+			if (isAgedBrie(item)) {
+				increaseQuality(item);
+			} else {
 				if (!isBackstage(item)) {
 					if (!isSulfuras(item)) {
 						decreaseQuality(item);
@@ -49,8 +51,6 @@ class GildedRose {
 				} else {
 					removeAllQuality(item);
 				}
-			} else {
-				increaseQuality(item);
 			}
 		}
 	}
