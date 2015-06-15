@@ -12,7 +12,8 @@ public class GildedRoseTest {
 	public void sell_in_decreases_every_day() {
 		GildedRose app = gildedRose(normalItem());
 		app.updateQuality();
-		assertEquals(9, app.items[0].sellIn);
+		int expectedSellIn = 9;
+		assertEquals(expectedSellIn, app.items[0].sellIn);
 	}
 
 	private GildedRose gildedRose(Item item) {
