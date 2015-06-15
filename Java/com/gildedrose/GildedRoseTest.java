@@ -137,7 +137,12 @@ public class GildedRoseTest {
 	}
 
 	private Item itemWithNormalSellInAndQuality(String name) {
-		return new Item(name, NORMAL_ITEM_SELL_IN, NORMAL_ITEM_QUALITY);
+		int sellIn = NORMAL_ITEM_SELL_IN;
+		return itemWithNormalQuality(name, sellIn);
+	}
+
+	private Item itemWithNormalQuality(String name, int sellIn) {
+		return new Item(name, sellIn, NORMAL_ITEM_QUALITY);
 	}
 
 	private void assertSellIn(int expectedSellIn, GildedRose app) {
