@@ -63,9 +63,7 @@ public class GildedRoseTest {
 	// - Increases in Quality as it's SellIn value approaches
 	@Test
 	public void backstage_increase_quality() {
-		Item item = backstage();
-		verifyQuality(NORMAL_ITEM_QUALITY + QUALITY_CHANGE, item);
-
+		verifyQuality(NORMAL_ITEM_QUALITY + QUALITY_CHANGE, backstage());
 	}
 
 	private Item backstage() {
