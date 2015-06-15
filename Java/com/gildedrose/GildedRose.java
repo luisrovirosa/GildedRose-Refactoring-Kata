@@ -1,6 +1,7 @@
 package com.gildedrose;
 
 class GildedRose {
+	private static final String SULFURAS_NAME = "Sulfuras, Hand of Ragnaros";
 	private static final String AGED_BRIE_NAME = "Aged Brie";
 	private static final String BACKSTAGE_NAME = "Backstage passes to a TAFKAL80ETC concert";
 	Item[] items;
@@ -18,7 +19,7 @@ class GildedRose {
 	private void update(Item item) {
 		if (!isAgedBrie(item) && !isBackstage(item)) {
 			if (hasQuality(item)) {
-				if (!item.name.equals("Sulfuras, Hand of Ragnaros")) {
+				if (!item.name.equals(SULFURAS_NAME)) {
 					item.quality = item.quality - 1;
 				}
 			}
@@ -42,7 +43,7 @@ class GildedRose {
 			}
 		}
 
-		if (!item.name.equals("Sulfuras, Hand of Ragnaros")) {
+		if (!item.name.equals(SULFURAS_NAME)) {
 			item.sellIn = item.sellIn - 1;
 		}
 
@@ -50,7 +51,7 @@ class GildedRose {
 			if (!isAgedBrie(item)) {
 				if (!isBackstage(item)) {
 					if (hasQuality(item)) {
-						if (!item.name.equals("Sulfuras, Hand of Ragnaros")) {
+						if (!item.name.equals(SULFURAS_NAME)) {
 							item.quality = item.quality - 1;
 						}
 					}
