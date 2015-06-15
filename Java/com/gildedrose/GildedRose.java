@@ -36,7 +36,7 @@ class GildedRose {
 						}
 					}
 
-					if (item.sellIn < 6) {
+					if (item.sellIn <= 5) {
 						if (hasNotMaximumQuality(item)) {
 							increaseQuality(item);
 						}
