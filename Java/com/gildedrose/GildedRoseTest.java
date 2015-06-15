@@ -6,12 +6,11 @@ import org.junit.Test;
 
 public class GildedRoseTest {
 
-	private static final int MINIMUM_QUALITY = 0;
-
 	private static final String NORMAL_ITEM_NAME = "foo";
 
 	private static final int DEFAULT_QUALITY_CHANGE = -1;
 	private static final int NORMAL_ITEM_QUALITY = 5;
+	private static final int MINIMUM_QUALITY = 0;
 
 	private static final int DEFAULT_SELL_IN_CHANGE = -1;
 	private static final int EXPIRED_SELL_IN = 0;
@@ -32,7 +31,6 @@ public class GildedRoseTest {
 		verifyQuality(NORMAL_ITEM_QUALITY + 2 * DEFAULT_QUALITY_CHANGE, expiredItem());
 	}
 
-	// - The Quality of an item is never negative
 	@Test
 	public void quality_is_never_negative() {
 		verifyQuality(MINIMUM_QUALITY, itemWithoutQuality());
