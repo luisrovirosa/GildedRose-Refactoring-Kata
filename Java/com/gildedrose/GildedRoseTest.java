@@ -28,11 +28,6 @@ public class GildedRoseTest {
 		verifyQuality(NORMAL_ITEM_QUALITY + 2 * DEFAULT_QUALITY_CHANGE, expiredItem());
 	}
 
-	private Item expiredItem() {
-		Item expiredItem = new Item("foo", EXPIRED_SELL_IN, NORMAL_ITEM_QUALITY);
-		return expiredItem;
-	}
-
 	// - The Quality of an item is never negative
 	// - "Aged Brie" actually increases in Quality the older it gets
 	// - The Quality of an item is never more than 50
@@ -62,8 +57,11 @@ public class GildedRoseTest {
 	}
 
 	private Item normalItem() {
-		Item item = new Item("foo", NORMAL_ITEM_SELL_IN, NORMAL_ITEM_QUALITY);
-		return item;
+		return new Item("foo", NORMAL_ITEM_SELL_IN, NORMAL_ITEM_QUALITY);
+	}
+
+	private Item expiredItem() {
+		return new Item("foo", EXPIRED_SELL_IN, NORMAL_ITEM_QUALITY);
 	}
 
 	private void assertSellIn(int expectedSellIn, GildedRose app) {
