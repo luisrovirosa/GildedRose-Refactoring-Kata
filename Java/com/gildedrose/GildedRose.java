@@ -25,21 +25,15 @@ class GildedRose {
 				decreaseQuality(item);
 			}
 		} else {
-			if (hasNotMaximumQuality(item)) {
-				increaseQuality(item);
+			increaseQuality(item);
 
-				if (isBackstage(item)) {
-					if (item.sellIn <= TEN_DAYS) {
-						if (hasNotMaximumQuality(item)) {
-							increaseQuality(item);
-						}
-					}
+			if (isBackstage(item)) {
+				if (item.sellIn <= TEN_DAYS) {
+					increaseQuality(item);
+				}
 
-					if (item.sellIn <= FIVE_DAYS) {
-						if (hasNotMaximumQuality(item)) {
-							increaseQuality(item);
-						}
-					}
+				if (item.sellIn <= FIVE_DAYS) {
+					increaseQuality(item);
 				}
 			}
 		}
@@ -58,9 +52,7 @@ class GildedRose {
 					removeAllQuality(item);
 				}
 			} else {
-				if (hasNotMaximumQuality(item)) {
-					increaseQuality(item);
-				}
+				increaseQuality(item);
 			}
 		}
 	}
@@ -78,7 +70,9 @@ class GildedRose {
 	}
 
 	private void increaseQuality(Item item) {
-		item.quality = item.quality + 1;
+		if (hasNotMaximumQuality(item)) {
+			item.quality = item.quality + 1;
+		}
 	}
 
 	private boolean hasNotMaximumQuality(Item item) {
