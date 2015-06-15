@@ -38,9 +38,7 @@ class GildedRose {
 			}
 		}
 
-		if (!isSulfuras(item)) {
-			decreaseSellIn(item);
-		}
+		decreaseSellIn(item);
 
 		if (hasExpired(item)) {
 			if (!isAgedBrie(item)) {
@@ -66,7 +64,9 @@ class GildedRose {
 	}
 
 	private void decreaseSellIn(Item item) {
-		item.sellIn = item.sellIn - 1;
+		if (!isSulfuras(item)) {
+			item.sellIn = item.sellIn - 1;
+		}
 	}
 
 	private void increaseQuality(Item item) {
