@@ -6,6 +6,8 @@ import org.junit.Test;
 
 public class GildedRoseTest {
 
+	private static final int MINIMUM_QUALITY = 0;
+
 	private static final String NORMAL_ITEM_NAME = "foo";
 
 	private static final int DEFAULT_QUALITY_CHANGE = -1;
@@ -33,7 +35,7 @@ public class GildedRoseTest {
 	// - The Quality of an item is never negative
 	@Test
 	public void quality_is_never_negative() {
-		verifyQuality(0, itemWithoutQuality());
+		verifyQuality(MINIMUM_QUALITY, itemWithoutQuality());
 	}
 
 	// - "Aged Brie" actually increases in Quality the older it gets
@@ -72,7 +74,7 @@ public class GildedRoseTest {
 	}
 
 	private Item itemWithoutQuality() {
-		return new Item(NORMAL_ITEM_NAME, NORMAL_ITEM_SELL_IN, 0);
+		return new Item(NORMAL_ITEM_NAME, NORMAL_ITEM_SELL_IN, MINIMUM_QUALITY);
 	}
 
 	private void assertSellIn(int expectedSellIn, GildedRose app) {
