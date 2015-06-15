@@ -105,7 +105,7 @@ public class GildedRoseTest {
 	}
 
 	private Item expiredItem() {
-		return new Item(NORMAL_ITEM_NAME, EXPIRED_SELL_IN, NORMAL_ITEM_QUALITY);
+		return itemWithNormalQuality(NORMAL_ITEM_NAME, EXPIRED_SELL_IN);
 	}
 
 	private Item itemWithoutQuality() {
@@ -129,11 +129,11 @@ public class GildedRoseTest {
 	}
 
 	private Item backstageInIn10Days() {
-		return new Item(BACKSTAGE_NAME, SELL_IN_IN_10_DAYS, NORMAL_ITEM_QUALITY);
+		return itemWithNormalQuality(BACKSTAGE_NAME, SELL_IN_IN_10_DAYS);
 	}
 
 	private Item backstageIn5Days() {
-		return new Item(BACKSTAGE_NAME, SELL_IN_IN_5_DAYS, NORMAL_ITEM_QUALITY);
+		return itemWithNormalQuality(BACKSTAGE_NAME, SELL_IN_IN_5_DAYS);
 	}
 
 	private Item itemWithNormalSellInAndQuality(String name) {
