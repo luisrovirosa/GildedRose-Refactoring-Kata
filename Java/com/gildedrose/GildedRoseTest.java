@@ -38,8 +38,7 @@ public class GildedRoseTest {
 
 	@Test
 	public void aged_brie_increases_quality() {
-		Item item = agedBrie();
-		verifyQuality(NORMAL_ITEM_QUALITY + QUALITY_CHANGE, item);
+		verifyQuality(NORMAL_ITEM_QUALITY + QUALITY_CHANGE, agedBrie());
 	}
 
 	private Item agedBrie() {
