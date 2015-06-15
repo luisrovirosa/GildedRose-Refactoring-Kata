@@ -55,6 +55,11 @@ public class GildedRoseTest {
 		verifyQuality(NORMAL_ITEM_QUALITY, sulfuras());
 	}
 
+	@Test
+	public void sulfuras_never_changes_the_sell_in() {
+		verifyQuality(NORMAL_ITEM_SELL_IN, sulfuras());
+	}
+
 	// - "Backstage passes",
 	// - Increases in Quality as it's SellIn value approaches
 	// - Quality increases by 2 when there are 10 days or less
