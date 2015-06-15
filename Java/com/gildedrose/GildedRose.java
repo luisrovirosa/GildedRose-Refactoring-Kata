@@ -38,10 +38,7 @@ class GildedRose {
 			increaseQuality(item, increment);
 		} else if (!isSulfuras(item)) {
 			decreaseQuality(item);
-		}
-
-		if (hasExpired(item)) {
-			if (!isSulfuras(item)) {
+			if (hasExpired(item)) {
 				decreaseQuality(item);
 			}
 		}
@@ -62,13 +59,15 @@ class GildedRose {
 	}
 
 	private void increaseQuality(Item item, int increment) {
-		if (hasNotMaximumQuality(item)) {
-			item.quality = item.quality + increment;
+		item.quality = item.quality + increment;
+		if (hasMaximumQuality(item)) {
+			item.quality = MAXIMUM_QUALITY;
 		}
+
 	}
 
-	private boolean hasNotMaximumQuality(Item item) {
-		return item.quality < MAXIMUM_QUALITY;
+	private boolean hasMaximumQuality(Item item) {
+		return item.quality > MAXIMUM_QUALITY;
 	}
 
 	private void decreaseQuality(Item item) {
