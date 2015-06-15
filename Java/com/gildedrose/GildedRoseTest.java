@@ -15,8 +15,15 @@ public class GildedRoseTest {
 		app.updateQuality();
 		assertEquals(9, app.items[0].sellIn);
 	}
-	// - Quality decreases every day
 
+	// - Quality decreases every day
+	@Test
+	public void quality_decreases_every_day() {
+		Item[] items = new Item[] { new Item("foo", 10, 5) };
+		GildedRose app = new GildedRose(items);
+		app.updateQuality();
+		assertEquals(4, app.items[0].quality);
+	}
 	// - Once the sell by date has passed, Quality degrades twice as fast
 	// - The Quality of an item is never negative
 	// - "Aged Brie" actually increases in Quality the older it gets
