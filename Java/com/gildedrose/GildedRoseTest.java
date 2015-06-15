@@ -84,7 +84,7 @@ public class GildedRoseTest {
 	}
 
 	private Item normalItem() {
-		return new Item(NORMAL_ITEM_NAME, NORMAL_ITEM_SELL_IN, NORMAL_ITEM_QUALITY);
+		return itemWithNormalSellInAndQuality(NORMAL_ITEM_NAME);
 	}
 
 	private Item expiredItem() {
@@ -101,6 +101,10 @@ public class GildedRoseTest {
 
 	private Item agedBrieWithMaximumQuality() {
 		return new Item(AGED_BRIE_NAME, NORMAL_ITEM_SELL_IN, MAXIMUM_QUALITY);
+	}
+
+	private Item itemWithNormalSellInAndQuality(String name) {
+		return new Item(name, NORMAL_ITEM_SELL_IN, NORMAL_ITEM_QUALITY);
 	}
 
 	private void assertSellIn(int expectedSellIn, GildedRose app) {
