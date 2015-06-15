@@ -22,24 +22,32 @@ class GildedRose {
 	private void update(Item item) {
 		decreaseSellIn(item);
 		if (isAgedBrie(item)) {
-			int increment = hasExpired(item) ? 2 : 1;
-			increaseQuality(item, increment);
+			processAgedBrie(item);
 		} else if (isBackstage(item)) {
-			if (hasExpired(item)) {
-				removeAllQuality(item);
-			} else {
-				int increment;
-				if (item.sellIn <= FIVE_DAYS) {
-					increment = 3;
-				} else if (item.sellIn <= TEN_DAYS) {
-					increment = 2;
-				} else {
-					increment = 1;
-				}
-				increaseQuality(item, increment);
-			}
+			processBackstage(item);
 		} else if (!isSulfuras(item)) {
 			processNormalItem(item);
+		}
+	}
+
+	private void processAgedBrie(Item item) {
+		int increment = hasExpired(item) ? 2 : 1;
+		increaseQuality(item, increment);
+	}
+
+	private void processBackstage(Item item) {
+		if (hasExpired(item)) {
+			removeAllQuality(item);
+		} else {
+			int increment;
+			if (item.sellIn <= FIVE_DAYS) {
+				increment = 3;
+			} else if (item.sellIn <= TEN_DAYS) {
+				increment = 2;
+			} else {
+				increment = 1;
+			}
+			increaseQuality(item, increment);
 		}
 	}
 
