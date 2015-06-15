@@ -74,7 +74,6 @@ public class GildedRoseTest {
 		verifyQuality(NORMAL_ITEM_QUALITY + 2 * QUALITY_CHANGE, backstageInIn10Days());
 	}
 
-	// - By 3 when there are 5 days or less but
 	@Test
 	public void backstage_increase_quality_by_3_when_sell_in_is_5_or_less() {
 		verifyQuality(NORMAL_ITEM_QUALITY + 3 * QUALITY_CHANGE, backstageIn5Days());
