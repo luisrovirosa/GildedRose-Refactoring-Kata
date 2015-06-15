@@ -81,7 +81,7 @@ public class GildedRoseTest {
 
 	@Test
 	public void backstage_drops_to_0_quality_after_the_concert() {
-		Item item = itemWithNormalQuality(BACKSTAGE_NAME, EXPIRED_SELL_IN);
+		Item item = backstageAfterTheConcert();
 		verifyQuality(MINIMUM_QUALITY, item);
 	}
 
@@ -137,6 +137,10 @@ public class GildedRoseTest {
 
 	private Item backstageIn5Days() {
 		return itemWithNormalQuality(BACKSTAGE_NAME, SELL_IN_IN_5_DAYS);
+	}
+
+	private Item backstageAfterTheConcert() {
+		return itemWithNormalQuality(BACKSTAGE_NAME, EXPIRED_SELL_IN);
 	}
 
 	private Item itemWithNormalSellInAndQuality(String name) {
