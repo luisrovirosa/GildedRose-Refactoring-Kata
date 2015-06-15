@@ -6,6 +6,7 @@ import org.junit.Test;
 
 public class GildedRoseTest {
 
+	private static final int SELL_IN_IN_10_DAYS = 10;
 	private static final String BACKSTAGE_NAME = "Backstage passes to a TAFKAL80ETC concert";
 	private static final String NORMAL_ITEM_NAME = "foo";
 	private static final String AGED_BRIE_NAME = "Aged Brie";
@@ -70,7 +71,7 @@ public class GildedRoseTest {
 	// - Quality increases by 2 when there are 10 days or less
 	@Test
 	public void backstage_increase_quality_by_2_when_sell_in_is_10_or_less() {
-		Item item = new Item(BACKSTAGE_NAME, 10, NORMAL_ITEM_QUALITY);
+		Item item = new Item(BACKSTAGE_NAME, SELL_IN_IN_10_DAYS, NORMAL_ITEM_QUALITY);
 		verifyQuality(NORMAL_ITEM_QUALITY + 2 * QUALITY_CHANGE, item);
 
 	}
