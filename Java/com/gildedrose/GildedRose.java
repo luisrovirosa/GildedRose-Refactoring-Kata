@@ -22,6 +22,9 @@ class GildedRose {
 	private void update(Item item) {
 		if (isAgedBrie(item)) {
 			increaseQuality(item);
+			if (hasExpired(item)) {
+				increaseQuality(item);
+			}
 		} else if (isBackstage(item)) {
 			increaseQuality(item);
 			if (item.sellIn <= TEN_DAYS) {
@@ -38,9 +41,7 @@ class GildedRose {
 		decreaseSellIn(item);
 
 		if (hasExpired(item)) {
-			if (isAgedBrie(item)) {
-				increaseQuality(item);
-			} else if (isBackstage(item)) {
+			if (isBackstage(item)) {
 				removeAllQuality(item);
 			} else if (!isSulfuras(item)) {
 				decreaseQuality(item);
